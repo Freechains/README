@@ -15,12 +15,11 @@ scalable.
 
 ## Install
 
-Java:    https://github.com/Freechains/jvm
-Android: https://github.com/Freechains/android
+```
+$ wget -qO- https://github.com/Freechains/README/releases/download/v0.2/install.sh | sudo sh
+```
 
 ## Use
-
-### Command Line
 
 - Create a `freechains` host:
 
