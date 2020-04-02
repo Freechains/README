@@ -31,8 +31,10 @@ $ freechains host create /tmp/myhost
 - Start host:
 
 ```
-$ freechains host start /tmp/myhost &
+$ freechains host start /tmp/myhost
 ```
+
+- Switch to another terminal.
 
 - Join the `/chat` chain:
 
@@ -40,11 +42,19 @@ $ freechains host start /tmp/myhost &
 $ freechains chain join /chat
 ```
 
+- Create an identity:
+
+```
+$ freechains crypto create pubpvt "My very strong passphrase"
+EB172ED6C782145B8D4FD043252206192C302E164C0BD16D49EB9D36D5188070 96700ACD1128035FFEF5DC264DF87D5FEE45FF15E2A880708AE40675C9AD039EEB172ED6C782145B8D4FD043252206192C302E164C0BD16D49EB9D36D5188070
+$ PVT=96700ACD1128035FFEF5DC264DF87D5FEE45FF15E2A880708AE40675C9AD039EEB172ED6C782145B8D4FD043252206192C302E164C0BD16D49EB9D36D5188070
+```
+
 - Post some content:
 
 ```
-$ freechains chain post /chat inline utf8 "Hello World!"
-$ freechains chain post /chat inline utf8 "I am here!"
+$ freechains chain post /chat inline utf8 "Hello World!" --sign=$PVT
+$ freechains chain post /chat inline utf8 "I am here!"   --sign=$PVT
 ```
 
 - Communicate with other peers:
@@ -55,7 +65,8 @@ $ freechains chain post /chat inline utf8 "I am here!"
 
 ```
 $ freechains host create /tmp/othost 8331
-$ freechains host start /tmp/othost &
+$ freechains host start /tmp/othost
+# switch to another terminal
 $ freechains --host=localhost:8331 chain join /chat
 $ freechains --host=localhost:8330 chain send /chat localhost:8331
 ```
@@ -67,9 +78,9 @@ then be traversed as follows:
     - Iterate over its `fronts` posts recursively.
 
 ```
-$ freechains chain genesis /chat
+$ freechains --host=localhost:8331 chain genesis /chat
 0_A80B5390F7CF66A8781F42AEB68912F2745FC026A71885D7A3CB70AB81764FB2
-$ freechains chain get /chat 0_A80B5390F7CF66A8781F42AEB68912F2745FC026A71885D7A3CB70AB81764FB2
+$ freechains --host=localhost:8331 chain get /chat 0_A80B5390F7CF66A8781F42AEB68912F2745FC026A71885D7A3CB70AB81764FB2
 {
     ...
     "fronts": [
@@ -77,7 +88,7 @@ $ freechains chain get /chat 0_A80B5390F7CF66A8781F42AEB68912F2745FC026A71885D7A
     ],
     ...
 }
-$ freechains chain get /chat 1_1D5D2B146B49AF22F7E738778F08E678D48C6DAAF84AF4128A17D058B6F0D852
+$ freechains --host=localhost:8331 chain get /chat 1_1D5D2B146B49AF22F7E738778F08E678D48C6DAAF84AF4128A17D058B6F0D852
 {
     "immut": {
         ...
