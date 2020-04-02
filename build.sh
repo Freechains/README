@@ -2,6 +2,20 @@
 
 VER=v0.2
 
+# generate jvm
+
+cd /data/IntelliJIDEAProjects/jvm/src/main/make/
+make install
+cd -
+
+# generate lua
+
+cd /data/freechains/lua
+make install
+cd -
+
+# copy files back
+
 rm -Rf /tmp/freechains-build/
 rm /tmp/freechains-$VER.zip
 

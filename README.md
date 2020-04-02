@@ -19,7 +19,7 @@ scalable.
 $ wget -qO- https://github.com/Freechains/README/releases/download/v0.2/install.sh | sudo sh
 ```
 
-## Use
+## Basic
 
 - Create a `freechains` host:
 
