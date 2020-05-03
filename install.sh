@@ -10,5 +10,6 @@ wget -nv --show-progress --progress=bar:force https://github.com/Freechains/READ
 unzip freechains-$VER.zip
 
 cd /tmp/freechains-build/
-cp [Ff]reechains* /usr/local/bin/
-cp lua/* /usr/local/share/lua/5.3/freechains/
+cp Freechains.jar freechains /usr/local/bin/
+#mkdir -p /usr/local/share/lua/5.3/freechains/
+#cp lua/* /usr/local/share/lua/5.3/freechains/

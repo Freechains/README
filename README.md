@@ -17,6 +17,14 @@ community.
 
 ## Install
 
+First, you need to install `java` and `libsodium`:
+
+```
+$ sudo apt install default-jre libsodium23
+```
+
+Then, you are ready to install `freechains`:
+
 ```
 $ wget -qO- https://github.com/Freechains/README/releases/download/v0.3.0/install.sh | sudo sh
 ```
@@ -105,9 +113,11 @@ $ freechains --host=localhost:8331 chain get /chat 1_1D5D2B146B49AF22F7E738778F0
 }
 ```
 
+<!--
 - Visualize the chain:
 
 ```
 $ freechains-dot /tmp/othost/chains/chat/ | dot -Tpng -o /tmp/chat.png
 $ eog /tmp/chat.png
 ```
+-->

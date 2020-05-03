@@ -27,9 +27,9 @@ cd -
 
 # generate lua
 
-cd /data/freechains/lua
-make install
-cd -
+#cd /data/freechains/lua
+#make install
+#cd -
 
 # copy files back
 
@@ -38,8 +38,8 @@ rm /tmp/freechains-$VER.zip
 
 mkdir -p /tmp/freechains-build/lua/
 
-cp /usr/local/bin/[Ff]reechains* /tmp/freechains-build/
-cp /usr/local/share/lua/5.3/freechains/* /tmp/freechains-build/lua/
+cp /usr/local/bin/Freechains.jar /usr/local/bin/freechains /tmp/freechains-build/
+#cp /usr/local/share/lua/5.3/freechains/* /tmp/freechains-build/lua/
 
 cd /tmp/
 zip freechains-$VER.zip -r freechains-build/
