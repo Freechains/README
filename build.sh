@@ -1,6 +1,15 @@
 #!/bin/sh
 
-VER=v0.2
+# RUN:
+# $ sudo ./build.sh
+# $ ls -l *.zip
+#
+# UPLOAD:
+# - https://github.com/Freechains/README/releases/new
+# - tag   = <version>
+# - title = <version>
+
+VER=v0.3.0
 
 # generate jvm
 
