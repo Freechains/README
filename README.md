@@ -3,8 +3,7 @@
 - Persistent publish-subscribe topic-based model
 - Unstructured peer-to-peer gossip dissemination
 - Happened-before best-effort partial order
-- Per-topic reputation system
-- Social consensus for healthiness
+- Per-topic reputation system for healthiness
 
 A peer posts a message to a topic (a chain) and all other connected peers
 interested in the same topic eventually receive the message.
@@ -16,7 +15,7 @@ scalable.
 ## Install
 
 ```
-$ wget -qO- https://github.com/Freechains/README/releases/download/v0.2/install.sh | sudo sh
+$ wget -qO- https://github.com/Freechains/README/releases/download/v0.3.0/install.sh | sudo sh
 ```
 
 ## Basic
