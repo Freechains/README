@@ -1,13 +1,21 @@
 #!/bin/sh
 
-# RUN:
+# EDIT:
+# - build.sh
+#   - VER=...
+# - install.sh
+#   - VER=...
+#
+# BUILD:
 # $ sudo ./build.sh
 # $ ls -l *.zip
 #
+#
 # UPLOAD:
 # - https://github.com/Freechains/README/releases/new
-# - tag   = <version>
-# - title = <version>
+# - tag    = <version>
+# - title  = <version>
+# - Attach = { .zip, install.sh }
 
 VER=v0.3.0
 

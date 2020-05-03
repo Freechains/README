@@ -1,4 +1,4 @@
-# Freechains: peer-to-peer content dissemination
+# Freechains: Peer-to-peer Content Dissemination
 
 - Persistent publish-subscribe topic-based model
 - Unstructured peer-to-peer gossip dissemination
@@ -11,6 +11,9 @@ interested in the same topic eventually receive the message.
 Freechains is (intended to be) decentralized, fair, free (*as-in-speech*), free
 (*as-in-beer*), privacy aware, secure, persistent, SPAM resistant, and
 scalable.
+
+After you become familar with the basics of Freechains, [join](JOIN.md) our
+community.
 
 ## Install
 
