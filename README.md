@@ -14,6 +14,7 @@ scalable.
 
 After you become familar with the basics of Freechains, [join](JOIN.md) our
 community.
+It is possible to use an [e-mail client](MAIL.md) to interface with Freechains.
 
 ## Install
 
@@ -26,7 +27,7 @@ $ sudo apt install default-jre libsodium23
 Then, you are ready to install `freechains`:
 
 ```
-$ wget -qO- https://github.com/Freechains/README/releases/download/v0.3.0/install.sh | sudo sh
+$ wget -qO- https://github.com/Freechains/README/releases/download/v0.3.1/install.sh | sudo sh
 ```
 
 ## Basic

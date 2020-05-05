@@ -1,5 +1,8 @@
 # Freechains: Join our Community
 
+After you join our community, it is possible to use an [e-mail client](MAIL.md)
+to interface with Freechains.
+
 ## Public Resources
 
 - Chains:
@@ -37,6 +40,14 @@ $ freechains chain join /
 $ freechains chain join /<your-pubkey> <your-pubkey>
 ```
 
+- Receive existing posts from peers:
+
+```
+$ freechains chain recv / <remote-host-1>
+...
+$ freechains chain recv / <remote-host-N>
+```
+
 - Post your hosts, chains of interest and identities to `/`:
 
 ```
@@ -50,12 +61,16 @@ Host: <your-host>
 $ freechains --host=<public-host> chain post / file utf8 /tmp/message --sign=<your-pvtkey>
 ```
 
+- Send new posts to peers:
+
+```
+$ freechains chain send / <remote-host-1>
+...
+$ freechains chain send / <remote-host-N>
+```
+
 - Keep track of your local state:
     - listen in realtime
         - `freechains chain listen /`
     - check periodically
-        - `freechains chain heads linked /`
-        - `freechains chain heads blocked /`
-
-
-
+        - `freechains chain heads all /`
