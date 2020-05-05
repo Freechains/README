@@ -63,8 +63,8 @@ $ PVT=96700ACD1128035FFEF5DC264DF87D5FEE45FF15E2A880708AE40675C9AD039EEB172ED6C7
 - Post some content:
 
 ```
-$ freechains chain post /chat inline utf8 "Hello World!" --sign=$PVT
-$ freechains chain post /chat inline utf8 "I am here!"   --sign=$PVT
+$ freechains chain post /chat inline "Hello World!" --sign=$PVT
+$ freechains chain post /chat inline "I am here!"   --sign=$PVT
 ```
 
 - Communicate with other peers:
