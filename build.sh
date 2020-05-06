@@ -1,10 +1,13 @@
 #!/bin/sh
 
 # EDIT:
+# - Util.kt
 # - build.sh
 #   - VER=...
 # - install.sh
 #   - VER=...
+# - README.md
+#   - wget ...
 #
 # BUILD:
 # $ sudo ./build.sh
@@ -17,7 +20,7 @@
 # - title  = <version>
 # - Attach = { .zip, install.sh }
 
-VER=v0.3.2
+VER=v0.3.3
 
 # generate jvm
 
