@@ -27,7 +27,7 @@ $ sudo apt install default-jre libsodium23
 Then, you are ready to install `freechains`:
 
 ```
-$ wget -qO- https://github.com/Freechains/README/releases/download/v0.3.3/install.sh | sudo sh
+$ wget -qO- https://github.com/Freechains/README/releases/download/v0.3.4/install.sh | sudo sh
 ```
 
 ## Basic
@@ -102,11 +102,11 @@ $ freechains --host=localhost:8331 chain get /chat 1_1D5D2B146B49AF22F7E738778F0
 {
     "immut": {
         ...
-        "payload": "Hello World!",
         "backs": [
             "0_A80B5390F7CF66A8781F42AEB68912F2745FC026A71885D7A3CB70AB81764FB2"
         ]
     },
+    "pay": "Hello World!",
     "fronts": [
         "2_DFDC784B4609F16F4487163CAC531A9FE6A0C588DA39D597769DA279AB53C862"
     ],

@@ -1,12 +1,13 @@
 #!/bin/sh
 
-VER=v0.3.3
+VER=v0.3.4
 
 rm -Rf /tmp/freechains-build/
 rm -f  /tmp/freechains-$VER.zip
 
 cd /tmp/
-wget -nv --show-progress --progress=bar:force https://github.com/Freechains/README/releases/download/$VER/freechains-$VER.zip
+wget -nv https://github.com/Freechains/README/releases/download/$VER/freechains-$VER.zip
+# --show-progress --progress=bar:force
 unzip freechains-$VER.zip
 
 cd /tmp/freechains-build/
