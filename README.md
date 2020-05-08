@@ -12,14 +12,13 @@ Freechains is (intended to be) decentralized, fair, free (*as-in-speech*), free
 (*as-in-beer*), privacy aware, secure, persistent, SPAM resistant, and
 scalable.
 
-Introductory videos:
-    [part 1/3](https://www.youtube.com/watch?v=7_jM0lgWL2c)
-    [part 2/3](https://www.youtube.com/watch?v=bL0yyeVz_xk)
-    [part 3/3](https://www.youtube.com/watch?v=APlHK6YmmFw).
-
-After you become familiar with the basics of Freechains, [join](docs/join.md) our
-community.
-It is possible to use an [e-mail client](docs/mail.md) to interface with Freechains.
+- Resources:
+    - Introductory videos:
+        ([part-1/3](https://www.youtube.com/watch?v=7_jM0lgWL2c) |
+         [part-2/3](https://www.youtube.com/watch?v=bL0yyeVz_xk) |
+         [part-3/3](https://www.youtube.com/watch?v=APlHK6YmmFw)).
+    - [Join](docs/join.md) our community.
+    - Use an [e-mail client](docs/mail.md) to interface with Freechains.
 
 ## Install
 
