@@ -19,7 +19,7 @@ scalable.
         [3/3](https://www.youtube.com/watch?v=APlHK6YmmFw).
     - List of all [commands](docs/cmds.md).
     - List of all [publicly available resources](docs/join.md) in our community.
-    - Instructions to use an [e-mail client](docs/mail.md) to interface with Freechains.
+    - Using an [e-mail client](github.com/Freechains/mail/) to interface with Freechains.
 
 ## Install
 
