@@ -1,12 +1,15 @@
 # Freechains: Join our Community
 
-After you join our community, it is possible to use an [e-mail client](MAIL.md)
-to interface with Freechains.
+There are some publicly available resources to find other users and interact in
+the community.
+
+Send a message to us!
 
 ## Public Resources
 
 - Chains:
-    - `/`: miscellaneous content
+    - `/`:     miscellaneous content
+    - `/mail`: miscellaneous content using the [e-mail](mail.md) format
 
 - Public Identities:
     - Francisco Sant'Anna
@@ -18,10 +21,12 @@ to interface with Freechains.
     - `francisco-santanna.duckdns.org`
         - Chains:
             - `/`
+            - `/mail`
             - `/A2885F4570903EF5EBA941F3497B08EB9FA9A03B4284D9B27FF3E332BA7B6431`
     - `lcc-uerj.duckdns.org`
         - Chains:
             - `/`
+            - `/mail`
             - `/A2885F4570903EF5EBA941F3497B08EB9FA9A03B4284D9B27FF3E332BA7B6431`
 
 ## Join Freechains
@@ -58,7 +63,7 @@ From: <your-name>
 Pub:  <your-pubkey>
 Host: <your-host>
 
-$ freechains --host=<public-host> chain post / file utf8 /tmp/message --sign=<your-pvtkey>
+$ freechains --host=<public-host> chain post / file /tmp/message --sign=<your-pvtkey>
 ```
 
 - Send new posts to peers:
@@ -70,7 +75,7 @@ $ freechains chain send / <remote-host-N>
 ```
 
 - Keep track of your local state:
-    - listen in realtime
+    - listen in real time
         - `freechains chain listen /`
     - check periodically
         - `freechains chain heads all /`

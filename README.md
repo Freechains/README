@@ -14,11 +14,12 @@ scalable.
 
 - Resources:
     - Introductory videos:
-        ([part-1/3](https://www.youtube.com/watch?v=7_jM0lgWL2c) |
-         [part-2/3](https://www.youtube.com/watch?v=bL0yyeVz_xk) |
-         [part-3/3](https://www.youtube.com/watch?v=APlHK6YmmFw)).
-    - [Join](docs/join.md) our community.
-    - Use an [e-mail client](docs/mail.md) to interface with Freechains.
+        [1/3](https://www.youtube.com/watch?v=7_jM0lgWL2c) |
+        [2/3](https://www.youtube.com/watch?v=bL0yyeVz_xk) |
+        [3/3](https://www.youtube.com/watch?v=APlHK6YmmFw).
+    - List of all [commands](docs/cmds.md).
+    - List of all [publicly available resources](docs/join.md) in our community.
+    - Instructions to use an [e-mail client](docs/mail.md) to interface with Freechains.
 
 ## Install
 
@@ -34,7 +35,7 @@ Then, you are ready to install `freechains`:
 $ wget -qO- https://github.com/Freechains/README/releases/download/v0.3.4/install.sh | sudo sh
 ```
 
-## Basic
+## Basics
 
 - Create a `freechains` host:
 
