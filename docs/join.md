@@ -1,7 +1,6 @@
 # Freechains: Join our Community
 
-There are some publicly available resources to find other users and interact in
-the community.
+Publicly available resources to find users and interact with the community.
 
 Send a message to us!
 
@@ -9,7 +8,7 @@ Send a message to us!
 
 - Chains:
     - `/`:     miscellaneous content
-    - `/mail`: miscellaneous content using the [e-mail](mail.md) format
+    - `/mail`: miscellaneous content using the [e-mail](https://github.com/Freechains/mail/) format
 
 - Public Identities:
     - Francisco Sant'Anna
