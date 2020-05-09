@@ -5,8 +5,12 @@
 - Happened-before best-effort partial order
 - Per-topic reputation system for healthiness
 
-A peer posts a message to a topic (a chain) and all other connected peers
-interested in the same topic eventually receive the message.
+A user posts a message to a chain (a topic) and all other users subscribed to
+the same chain eventually receive the message.
+Users spend their reputation to post new messages and gain reputation from
+consolidated posts.
+Users can like and dislike messages from other users, which transfer reputation
+between them.
 
 <!---
 Freechains is (intended to be) decentralized, fair, free (*as-in-speech*), free
