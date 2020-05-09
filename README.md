@@ -8,9 +8,11 @@
 A peer posts a message to a topic (a chain) and all other connected peers
 interested in the same topic eventually receive the message.
 
+<!---
 Freechains is (intended to be) decentralized, fair, free (*as-in-speech*), free
 (*as-in-beer*), privacy aware, secure, persistent, SPAM resistant, and
 scalable.
+-->
 
 - Resources:
     - Introductory videos:
@@ -19,7 +21,7 @@ scalable.
         [3/3](https://www.youtube.com/watch?v=APlHK6YmmFw).
     - List of all [commands](docs/cmds.md).
     - List of all [publicly available resources](docs/join.md) in our community.
-    - Using an [e-mail client](github.com/Freechains/mail/) to interface with Freechains.
+    - Using an [e-mail client](https://github.com/Freechains/mail/) to interface with Freechains.
 
 ## Install
 
