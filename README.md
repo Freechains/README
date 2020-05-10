@@ -4,6 +4,7 @@
 - Unstructured peer-to-peer gossip dissemination
 - Happened-before best-effort partial order
 - Per-topic reputation system for healthiness
+- Free in all senses
 
 A user posts a message to a chain (a topic) and all other users subscribed to
 the same chain eventually receive the message.
@@ -18,14 +19,13 @@ Freechains is (intended to be) decentralized, fair, free (*as-in-speech*), free
 scalable.
 -->
 
-- Resources:
-    - Introductory videos:
-        [1/3](https://www.youtube.com/watch?v=7_jM0lgWL2c) |
-        [2/3](https://www.youtube.com/watch?v=bL0yyeVz_xk) |
-        [3/3](https://www.youtube.com/watch?v=APlHK6YmmFw).
-    - List of all [commands](docs/cmds.md).
-    - List of all [publicly available resources](docs/join.md) in our community.
-    - Using an [e-mail client](https://github.com/Freechains/mail/) to interface with Freechains.
+- Introductory videos:
+    [1/3](https://www.youtube.com/watch?v=7_jM0lgWL2c) |
+    [2/3](https://www.youtube.com/watch?v=bL0yyeVz_xk) |
+    [3/3](https://www.youtube.com/watch?v=APlHK6YmmFw).
+- List of all [commands](docs/cmds.md).
+- List of [publicly available resources](docs/join.md).
+- Using an [e-mail client](https://github.com/Freechains/mail/) to interface with Freechains.
 
 ## Install
 
