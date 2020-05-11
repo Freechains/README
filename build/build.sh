@@ -20,7 +20,7 @@
 # - title  = <version>
 # - Attach = { .zip, install.sh }
 
-VER=v0.3.6
+VER=v0.3.7
 
 # generate jvm
 
