@@ -26,6 +26,7 @@ scalable.
 - List of all [commands](docs/cmds.md).
 - List of [publicly available resources](docs/join.md).
 - Using an [e-mail client](https://github.com/Freechains/mail/) to interface with Freechains.
+- Discussion [group](https://groups.google.com/forum/#!forum/freechains) about Freechains.
 
 ## Install
 

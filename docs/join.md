@@ -33,23 +33,22 @@ Send a message to us!
 - Prepare your host:
     - create local host
     - start local host
-        - must be always executed on start up
     - join chains of interest
 
 ```
-$ freechains host create <local-path>
-$ freechains host start <local-path> &
-$ sleep 1
-$ freechains chain join /
+$ freechains host create <local-path>       # just once
+$ freechains host start <local-path> &      # every time on startup
+$ sleep 1                                   # give some time for the start
+$ freechains chain join /                   # just once for each chain to follow
 $ freechains chain join /<your-pubkey> <your-pubkey>
 ```
 
 - Receive existing posts from peers:
 
 ```
-$ freechains chain recv / <remote-host-1>
+$ freechains chain recv / <remote-host-1>   # periodically for each chain you follow...
 ...
-$ freechains chain recv / <remote-host-N>
+$ freechains chain recv / <remote-host-N>   # ...and for each host on your peer list
 ```
 
 - Post your hosts, chains of interest and identities to `/`:
@@ -68,9 +67,9 @@ $ freechains --host=<public-host> chain post / file /tmp/message --sign=<your-pv
 - Send new posts to peers:
 
 ```
-$ freechains chain send / <remote-host-1>
+$ freechains chain send / <remote-host-1>   # periodically for each chain you follow...
 ...
-$ freechains chain send / <remote-host-N>
+$ freechains chain send / <remote-host-N>   # ... and for each host on your peer list
 ```
 
 - Keep track of your local state:
