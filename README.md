@@ -19,6 +19,9 @@ Freechains is (intended to be) decentralized, fair, free (*as-in-speech*), free
 scalable.
 -->
 
+- Concepts:
+    - [Chain](docs/chains.md)
+    - [Reputation System](docs/reps.md)
 - Introductory videos:
     [1/3](https://www.youtube.com/watch?v=7_jM0lgWL2c) |
     [2/3](https://www.youtube.com/watch?v=bL0yyeVz_xk) |
