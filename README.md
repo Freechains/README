@@ -21,6 +21,7 @@ scalable.
 
 - Concepts:
     - [Chain](docs/chains.md)
+    - [Block](docs/blocks.md)
     - [Reputation System](docs/reps.md)
 - Introductory videos:
     [1/3](https://www.youtube.com/watch?v=7_jM0lgWL2c) |
