@@ -218,7 +218,7 @@ Binary files must be encoded as text with `uuencode` or `base64`, for example.
 ```
 freechains chain post / inline "Hello World!"
 freechains chain post /chat inline "Message from myself!" --sign=<my-pvtkey>
-freechains chain post /some-person inline "Crypted message from myself!" --crypt=<my-pvtkey> --sign=<my-pvtkey>
+freechains chain post /some-person inline "Crypted message from myself!" --crypt=<some-person-pubkey> --sign=<my-pvtkey>
 freechains chain post /trusted-friends inline "Crypted message to my friends" --crypt=<shared-key>
 echo "Hello World!" | freechains chain post / -
 

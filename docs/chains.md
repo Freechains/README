@@ -71,7 +71,7 @@ different purposes:
 ## Public Identity Chain
 
 A public identity represents a person or organization that wants to publish
-content to a target audience.
+content to a target audience (`1->N` communication).
 A person can be a blogger communicating ideas, an artist performing live, a
 politician announcing actions, etc.
 An organization can be a newspaper publishing news, a company advertising its
@@ -81,7 +81,9 @@ sanctioning laws.
 A public identity chain is a chain with a nonempty `pub` parameter which is the
 public key of the chain owner holding the associated private key.
 The chain owner has infinite [reputation](reps.md) and other users may be
-prohibited to post depending on the `owner-only` parameter.
+allowed or prohibited to post depending on the `owner-only` parameter.
+If other users are allowed to post, they may encrypt messages with the owner's
+public key so that only s/he can read it (`1<-N` communication).
 
 A public identity is identified by its public key
 [created](cmds.md#crypto-create) from a secret passphrase along with the
@@ -120,4 +122,33 @@ freechains chain join /A2885F4570903EF5EBA941F3497B08EB9FA9A03B4284D9B27FF3E332B
 
 ## Private Group Chain
 
+In a private group chain, messages circulate among trusted peers only.
+It can be used in `1<-1` communication such as e-mail conversations, `N<->N`
+communication in small groups such as for family and close friends, and also
+in `1<-` "self communication" such as a personal to-do list and backups.
+
+A private chain uses the `trusted` parameter when joining:
+
+```
+freechains chain join /friends trusted
+```
+
+In a private group chain, all users have infinite reputation and they are not
+even required to sign messages.
+Since peers communicate over the Internet, it is recommended to use end-to-end
+encryption for the messages:
+
+```
+freechains chain post /friends inline "Crypted message to my friends" --crypt=<shared-key>
+```
+
+The key has to be shared among the trusted friends by other means, such as
+through their public identity chains.
+
 ## Public Forum Chain
+
+In a public forum chain, messages circulate among untrusted possibly malicious
+users and peers (`N<->N` communication).
+For this reason, chains of this type must rely on the
+[reputation system](docs/reps.md) of Freechains to be viable in a completely
+decentralized setting.
