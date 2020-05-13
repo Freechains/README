@@ -21,10 +21,10 @@ scalable.
 
 - Concepts:
     - [Chain](docs/chains.md)
-    <!-- - [Block](docs/blocks.md) -->
+    - `[TODO]` [Block](docs/blocks.md)
     - [Reputation System](docs/reps.md)
 - List of all [commands](docs/cmds.md).
-<!-- - Comparison with [other](docs/others.md) decentralized systems. -->
+- `[TODO]` Comparison with [other](docs/others.md) decentralized systems. -->
 - Discussion [group](https://groups.google.com/forum/#!forum/freechains) about Freechains.
 - List of [publicly available resources](docs/join.md).
 - Using an [e-mail client](https://github.com/Freechains/mail/) to interface with Freechains.
