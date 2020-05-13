@@ -1,3 +1,9 @@
-# Freechains: Comparison with Other Decentralized Systems
+# Freechains: Comparison
 
 `TODO`
+
+- Federation-Based Systems
+
+- Publish-Subcribe Systems
+
+- Peer-to-Peer Systems
