@@ -22,10 +22,10 @@ chain can only have single block of height one.
 
 A chain is univocally identified by a unique hash code from four parameters:
 
-- `name`:    name of the chain (string starting with `/`)
-- `trusted`: if formed of trusted peers only (a boolean value)
-- `pubkey`:  public key of the chain owner (hexadecimal string, `empty` if unowned)
-- `oonly`:   if only the owner is allowed to post (a boolean value, `false` if unowned)
+- `name`:       name of the chain (string starting with `/`)
+- `trusted`:    if formed of trusted peers only (a boolean value)
+- `pub`:        public key of the chain owner (hexadecimal string, `empty` if unowned)
+- `owner-only`: if only the owner is allowed to post (a boolean value, `false` if unowned)
 
 <!-- BLAKE2b Curve25519 -->
 
@@ -39,37 +39,85 @@ chain are sharing the same chain.
 The [command](cmds.md#chain-join) to join a chain is as follows:
 
 ```
-freechains chain join <name> [trusted] [ [oonly] <pubkey> ]
+freechains chain join <name> [trusted] [ [owner-only] <pub> ]
 ```
+
+Note that Freechains provides a `join` instead a `create` command.
+The reason is that chains have no "creators", since different users in
+different hosts at different moments can issue the same command to reach
+exactly the same initial state.
+Joining a chain means to reserve a local space for blocks and become available
+to synchronize with other peer.
 
 Based on the chain parameters, Freechains supports three types of chains with
 different purposes:
 
-- *Public Identity:*
-    - Parameter `pubkey` is nonempty.
+- *Public Identity Chain:*
+    - Parameter `pub` is nonempty.
     - `1->N` and `1<-N` communication.
     - A public identity broadcasts content to an audience (`1->N`) with
       optional feedback (`1<-N`, if parameter `oonly` is `false`).
     - Examples: news site, streaming service, public profile in social media.
-- *Private Group:*
+- *Private Group Chain:*
     - Parameter `trusted` is `true`.
     - `1<->1`, `N<->N`, `1<-` private communication.
     - Trusted communication between pairs, groups, and alone (with itself).
     - Examples: e-mail, family WhatsApp group, backup.
-- *Public Forum:*
+- *Public Forum Chain:*
     - `N<->N` public communication.
     - Public communication among untrusted participants.
     - Examples: Q&A forums, chats, consumer-to-consumer sales.
 
-## Public Identity
+## Public Identity Chain
 
-<!--
-In a public identity chain, a person or organization registers its public key
-as
+A public identity represents a person or organization that wants to publish
+content to a target audience.
+A person can be a blogger communicating ideas, an artist performing live, a
+politician announcing actions, etc.
+An organization can be a newspaper publishing news, a company advertising its
+products, a streaming service broadcasting shows, or even a government
+sanctioning laws.
 
-freechains chain join /obama B2853F4570903EF3ECC941F3497C08EC9FB9B03C4154D9B27FF3E331BC7B6431
--->
+A public identity chain is a chain with a nonempty `pub` parameter which is the
+public key of the chain owner holding the associated private key.
+The chain owner has infinite [reputation](reps.md) and other users may be
+prohibited to post depending on the `owner-only` parameter.
 
-## Private Group
+A public identity is identified by its public key
+[created](cmds.md#crypto-create) from a secret passphrase along with the
+associated private key:
 
-## Public Forum
+```
+$ freechains crypto create pubpvt <my-very-strong-passphrase>
+A941F3... 27FF3E332BAB...  # output from the command: public-key private-key
+```
+
+The public identity should keep its private key in secret and disclose the
+public key to the target audience.
+Then, both the public identity and target audience should use the same
+parameters to join the chain.
+
+As an example, suppose the company *ACME* wants to advertise its products with
+disabled feedback from consumers:
+
+```
+freechains chain join /acme owner-only A941F3...
+```
+
+To post in the chain, the public identity should always sign its posts:
+
+```
+freechains --sign=27FF3E332BAB... chain post /acme inline 'Hello World!"
+```
+
+As a convention, public identities from ordinary users should use its public
+key as the chain name.
+For example, my own chain is instantiated as follows:
+
+```
+freechains chain join /A2885F4570903EF5EBA941F3497B08EB9FA9A03B4284D9B27FF3E332BA7B6431 A2885F4570903EF5EBA941F3497B08EB9FA9A03B4284D9B27FF3E332BA7B6431
+```
+
+## Private Group Chain
+
+## Public Forum Chain

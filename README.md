@@ -21,16 +21,17 @@ scalable.
 
 - Concepts:
     - [Chain](docs/chains.md)
-    - [Block](docs/blocks.md)
+    <!-- - [Block](docs/blocks.md) -->
     - [Reputation System](docs/reps.md)
+- List of all [commands](docs/cmds.md).
+<!-- - Comparison with [other](docs/others.md) decentralized systems. -->
+- Discussion [group](https://groups.google.com/forum/#!forum/freechains) about Freechains.
+- List of [publicly available resources](docs/join.md).
+- Using an [e-mail client](https://github.com/Freechains/mail/) to interface with Freechains.
 - Introductory videos:
     [1/3](https://www.youtube.com/watch?v=7_jM0lgWL2c) |
     [2/3](https://www.youtube.com/watch?v=bL0yyeVz_xk) |
     [3/3](https://www.youtube.com/watch?v=APlHK6YmmFw).
-- List of all [commands](docs/cmds.md).
-- List of [publicly available resources](docs/join.md).
-- Using an [e-mail client](https://github.com/Freechains/mail/) to interface with Freechains.
-- Discussion [group](https://groups.google.com/forum/#!forum/freechains) about Freechains.
 
 ## Install
 
