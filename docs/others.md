@@ -1,8 +1,10 @@
 # Freechains: Comparison
 
+<!--
 - Two main contributions:
     - communication patterns with same API
     - reputation system
+-->
 
 A number of systems have been proposed for content dissemination in a
 distributed setting.
