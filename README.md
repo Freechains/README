@@ -1,6 +1,6 @@
 # Freechains: Peer-to-peer Content Dissemination
 
-- Persistent publish-subscribe topic-based model
+- Local-first publish-subscribe topic-based model
 - Unstructured peer-to-peer gossip dissemination
 - Happened-before best-effort partial order
 - Per-topic reputation system for healthiness
@@ -21,7 +21,7 @@ scalable.
 
 - Concepts:
     - [Chain](docs/chains.md)
-    - `[TODO]` [Block](docs/blocks.md)
+    - `[TODO]` [Block / Post](docs/blocks.md)
     - [Reputation System](docs/reps.md)
 - List of all [commands](docs/cmds.md).
 - `[TODO]` Comparison with [other](docs/others.md) systems.

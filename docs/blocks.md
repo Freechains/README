@@ -1,3 +1,3 @@
-# Freechains: Blocks
+# Freechains: Blocks / Posts
 
 `TODO`
