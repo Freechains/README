@@ -32,15 +32,15 @@ decentralized.
 
 Increasing the number of servers, such as in federated pubsubs, does not change
 the concept, because each queue is still independent of the others and has to
-be stated explicitly.
-This fact breaks the local-first property of fully peer-to-peer systems since
-not all possible communication can be done alone in a local instance.
-For instance, publishing and subscribing to the same ID in different servers
-lead to different states overall.
+be stated explicitly in client actions.
+This fact breaks the local-first property of peer-to-peer systems since not all
+possible kinds of communication can be done alone in a local instance.
+For instance, publishing and subscribing to the same identity in different
+servers do not mean the same thing.
 
 Overall, the missing piece here are rules to merge independent queues, which is
 required for example to express
-[public `N <-> N` communication](chains.md#public-forum-chain).
+public [`N <-> N`](chains.md#public-forum-chain) communication.
 Trying to synchronize servers in some way would lead to the exact same issues
 that we are trying to address in Freechains: how to order messages across
 servers, how to deal with excess and SPAM, how to deal with fake news and
@@ -62,33 +62,35 @@ More recently,
 
 In federated systems, although all content can be managed locally (or recovered
 from servers), identities are not portable.
-If a server shuts down, or is banned by the rest of the federation (or
-government), or if the user becomes unsatisfied with the local policy, she will
-have to grab her content, move to another server, and announce her new identity
-to followers.
-In fully peer-to-peer systems like Freechains, the identity is controlled by
-the user itself with public-key authentication, which can be used in any server
-in the same way.
-In Freechains users operate on [public identity chains](chains.md#public-identity-chain)
+It is possible that a server shuts down, or is banned by the rest of the
+federation (or government), or the user becomes unsatisfied with the local
+server policy.
+In any of these cases, the user will have to grab her content, move to another
+server, and announce her new identity to followers.
+In peer-to-peer systems like Freechains, the identity is controlled by the user
+itself with public-key authentication, which can be used in any server in the
+same way.
+In Freechains users operate on
+    [public identity chains](chains.md#public-identity-chain)
 to disseminate their content to followers, which are also independent of
 specific servers.
 
 Moderation is also a major concern in federated applications.
 As examples, messages crossing server boundaries may diverge from local
 policies, and public identities may be target of SPAM.
-Moderation can be applied locally by the user or in the servers in as
-"one-size-fits-all solution".
+Moderation can be applied locally by the user or in the servers as
+one-size-fits-all solution.
 In either case, the messages may still propagate in the network.
 With no granularity for moderation actions or any form of consensus, it is
 difficult to support public forums
-([`N <-> N` communication](chains.md#public-forum-chain)) as also discussed
-above.
+([`N <-> N`](chains.md#public-forum-chain) communication) as discussed above.
 
 These limitations seem to be acknowledged by Matrix and they have plans to
 become more
     [decentralized](https://fosdem.org/2020/schedule/event/dip_p2p_matrix/)
 and to support
-    [moderation](https://matrix.org/docs/guides/moderation).
+    [moderation](https://matrix.org/docs/guides/moderation)
+more extensively.
 
 <!--
 - abrubt policy changes since, although inter-communication follows a standard protocol
