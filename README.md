@@ -7,9 +7,7 @@
 - *Multiple flavors of public and private communication* (`1->N`, `1<-N`, `N<->N`, `1<-`)
 - Free in all senses
 
-<small>
 *(In bold we highlight what we believe is particular to Freechains.)*
-</small>
 
 A user posts a message to a chain (a topic) and all other users subscribed to
 the same chain eventually receive the message.
