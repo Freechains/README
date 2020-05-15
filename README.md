@@ -3,8 +3,8 @@
 - Local-first publish-subscribe topic-based model
 - Unstructured peer-to-peer gossip dissemination
 - Happened-before best-effort partial order
-- *Per-topic reputation system for healthiness*
-- *Multiple flavors of public and private communication* (`1->N`, `1<-N`, `N<->N`, `1<-`)
+- **Per-topic reputation system for healthiness**
+- **Multiple flavors of public and private communication** (`1->N`, `1<-N`, `N<->N`, `1<-`)
 - Free in all senses
 
 *(In bold we highlight what we believe is particular to Freechains.)*
