@@ -49,6 +49,19 @@ $ wget -qO- https://github.com/Freechains/README/releases/download/v0.3.7/instal
 
 ## Basics
 
+The basic API of Freechains is very straightforward:
+
+- `host create`:     instantiates a peer locally (executed only once)
+- `host start`:      starts the local peer to serve requests (executed on every restart)
+- `crypto create`:   creates an identity
+- `chain join`:      joins a chain locally to post and read content
+- `chain post`:      posts to a chain locally
+- `chain get`:       reads a post locally
+- `chain traverse`:  iterates over (discovers) local posts
+- `chain send/recv`: synchronizes a local chain with a remote peer
+
+Follows a step-by-step execution:
+
 - Create a `freechains` host:
 
 ```
