@@ -1,10 +1,6 @@
 # Freechains: Comparison
 
-<!--
-- Two main contributions:
-    - communication patterns with same API
-    - reputation system
--->
+*(If any information here is innaccurate, please open an issue.)*
 
 A number of systems have been proposed for content dissemination in a
 distributed setting.
@@ -31,8 +27,8 @@ Queues are location based and hence are not abstract enough to be fully
 decentralized.
 
 Increasing the number of servers, such as in federated pubsubs, does not change
-the concept, because each queue is still independent of the others and has to
-be stated explicitly in client actions.
+the underlying foundation, because each queue is still independent of the
+others and has to be stated explicitly in client actions.
 This fact breaks the local-first property of peer-to-peer systems since not all
 possible kinds of communication can be done alone in a local instance.
 For instance, publishing and subscribing to the same identity in different
@@ -40,7 +36,7 @@ servers do not mean the same thing.
 
 Overall, the missing piece here are rules to merge independent queues, which is
 required for example to express
-public [`N <-> N`](chains.md#public-forum-chain) communication.
+public [`N<->N`](chains.md#public-forum-chain) content dissemination.
 Trying to synchronize servers in some way would lead to the exact same issues
 that we are trying to address in Freechains: how to order messages across
 servers, how to deal with excess and SPAM, how to deal with fake news and
@@ -83,7 +79,7 @@ one-size-fits-all solution.
 In either case, the messages may still propagate in the network.
 With no granularity for moderation actions or any form of consensus, it is
 difficult to support public forums
-([`N <-> N`](chains.md#public-forum-chain) communication) as discussed above.
+([`N<->N`](chains.md#public-forum-chain) communication) as discussed above.
 
 These limitations seem to be acknowledged by Matrix and they have plans to
 become more
@@ -92,63 +88,193 @@ and to support
     [moderation](https://matrix.org/docs/guides/moderation)
 more extensively.
 
-<!--
-- abrubt policy changes since, although inter-communication follows a standard protocol
-client-server are always under control of the server
-    - an example in e-mail require auth in SMTP
--->
+From another point of view, federated protocols seem to be more appropriate for
+stream-based real-time applications such as chats and log analytics with a
+large number of small messages.
+The number of hops and header overhead can be much smaller in client-server
+architectures in comparison to peer-to-peer systems with message signing, hash
+linking, and extra verification rules.
 
 ## Peer-to-Peer Systems
 
-`TODO`
+In peer-to-peer systems all nodes in the network have the same role, i.e.,
+there are no distinctions between clients and servers.
+The peers communicate directly between themselves and cooperate satisfying a
+protocol to achieve a goal, e.g., maintaining a public ledger of financial
+transactions or simply allowing people to communicate freely.
+[Bitcoin](https://en.wikipedia.org/wiki/Bitcoin) is probably the most
+successful peer-to-peer network to date but for the specific functionality of
+digital currency.
+[Scuttlebutt](https://en.wikipedia.org/wiki/Secure_Scuttlebutt) and
+[Aether](https://github.com/nehbit/aether) cover people's communication between
+friends and groups.
+[IPFS](https://en.wikipedia.org/wiki/InterPlanetary_File_System) and
+[dat](https://en.wikipedia.org/wiki/Dat_(software)) are more data centric such
+as for hosting large files and applications.
 
-<!--
-    - Structured Topology
-    - Unstructured Topology
+IPFS is centered around immutable content-addressed data, while dat around
+mutable pubkey-addressed data.
+IPFS is more suitable to share large and stable content such as movies,
+archives, or any kind of static blobs.
+dat is more suitable for dynamic content such as
+[web apps](https://en.wikipedia.org/wiki/Beaker_(web_browser))
+Both IPFS and dat use
+[DHTs](https://en.wikipedia.org/wiki/Distributed_hash_table)
+as their underlying architecture, which are optimal to serve large and popular
+files, but not for content search and discovery.
+In both cases, users need to know in advance what they are looking for, i.e.,
+data or pubkey links.
+DHTs are probably not the best architecture to model decentralized people's
+communication with continuous updates on content and relationships.
+The other systems that we discuss do not use DHTs.
 
-- Aether
+Bitcoin provides a very strong property that messages in the network are
+ordered and that this order is the same in all hosts, thus reaching global
+consensus.
+This property is relevant in the context of people's communication since a
+conversation is an ordered list of messages.
+Bitcoin uses a proof-of-work consensus algorithm that is immune to attacks such
+as SPAM and forged identities (Sybil attack), which is also fundamental to
+prevent in the context of content dissemination.
+However, proof-of-work is very expensive and in practice remains in the hands
+of a few peers which concentrate power.
+Freechains uses its [reputation system](reps.md) to prevent SPAM and Sybil
+attacks which is a kind of proof or work but for humans.
+An author has to "work" to post content of quality and is evaluated by other
+humans.
+The main advantage is that the actual work is not arbitrary and contributes
+more directly to the system itself.
 
-a kind of proof of work
-carefully thought to not receive a dislike
-one could argue that a bot could pass this test
-ok, as long as it contributes to the chain, no problem if a bot or human
-turing test
--->
+From all systems discussed, Scuttlebutt and Aether are those with more
+similarities with Freechains, and focus on `1->N` and `N<->N` communication,
+respectively.
 
-<!--
-- https://github.com/w3c/activitypub/issues/328
+Scuttlebutt is designed around public identities that follow each other to form
+a graph of connections which is also replicated in the topology of the network
+and data storage themselves.
+For instance, if identity `A` follows identity `B`, then the computer of `A`
+will (1) connect to the computer of `B` directly and (2) store all posts of `B`
+locally.
+The relationships are asymmetric, which allows `B` to not follow `A` in the
+example above.
+Freechains is designed around chains (topics), but since chains can owned by a
+[public identity](chains.md#public-identity-chain) it is possible to provide a
+similar behavior.
+The network topology of Freechains also relies on
+[friend-to-friend](https://en.wikipedia.org/wiki/Friend-to-friend) connections,
+but currently must be built outside the protocol (e.g., scripted by hand).
 
-https://news.ycombinator.com/item?id=17693565
- Yes but it unfortunatly completly ignores the topic of spam and moderation. So we will have another 10 years of experimenting at the expense of the users and the standard. And we may end up with some centralisation again like with email.
-Still a great tech though. I just wish the authors would think about IRL and not just assume a perfect sphere in a frictionless vaccum.
--->
+For group `N<->N` communication, Scuttlebutt uses the concept of channels,
+which are like hash tags, e.g. `#sports`.
+Users can tag posts with channels, which appear not only on their feeds but
+also in a "virtual feeds" representing the channels.
+However, users only see channel posts from other users they follow.
+In practice, channels just merge friends posts and filter them by tags, which
+again illustrates how Scuttlebutt is designed around public identities.
+In theory, to read all posts of a channel, a user would need to follow (which
+also implies storing feeds) of all users in the network.
+For this reason, new users may have a hard time to integrate because they
+depend on other users to follow them back to have any visibility in the system.
+On the other hand, assuming users behave more or less the same in different
+groups, Scuttlebutt is barely susceptible to abuse.
+Since Freechains is designed around chains (channels), content discovery is
+much easier, since new users have full visibility with a single like from the
+community.
+Following a chain means to only store posts of that chain and not necessarily
+all posts from all users, which can still be followed individually if they have
+their own `1->N` public chain.
 
-<!--
-https://schub.wtf/blog/2019/01/13/activitypub-final-thoughts-one-year-later.html?utm_campaign=Real-time&utm_medium=email&utm_source=ProcessOne%20newsletter
+Aether provides *peer-to-peer ephemeral public communities* being more aligned
+with `N<->N` public communication of Freechains.
+The posts are replicated in the network but are ephemeral in the sense that
+storage is limited in time.
+Aether requires computational proof-of-work to post in communities to prevent
+SPAM.
+Each community relies on continuous elections for moderators to prevent abusive
+behavior.
+Users can also choose their own moderators individually leading to different
+views of the communities.
+*(It is not clear if removed content is still stored to reach other nodes.)*
+Posts can be distinguished to receive upvotes and downvotes.
+Aether employs a very pragmatic approach to confront the threats of `N<->N`
+communication, using established techniques such as proof-of-work to combat
+SPAM and post rating to highlight good content, and also an innovative voting
+system to combat abuse.
+Freechains tries to address these threats with and only with the its reputation
+system.
+Reputation is a scarce resource handled autonomously by the protocol rules and
+has to be used wisely inside each chain to accept new users, combat abuse, and
+highlight content of quality.
 
-What ActivityPub is
-One of the most common misunderstandings about ActivityPub I see starts at the very simple question of what ActivityPub is, and what the SocialWG wanted it to be. To answer that, we should start by looking at the Social Web Working Group Charter, which basically is the document that describes the goals of that working group:
+## Freechains
 
-    a common JSON-based syntax for social data, a client-side API, and a Web protocol for federating social information
+As described in the [landing page](../README.md), Freechains has two particular
+features:
 
-So basically, they want to build two things:
+- Multiple flavors of public and private communication (`1->N`, `1<-N`, `N<->N`, `1<-`)
+- Per-topic reputation system for healthiness
 
-    a protocol used to exchange stuff between servers, and also between servers and clients; and
-    a JSON’y syntax for representing social data
--->
+unified mindset coherent consistent
 
-<!--
-https://cjslep.com/c/blog/an-activitypub-philosophy
-I want to give an overview of a philosophy that I’ve adopted while working on ActivityPub. Succinctly: I view ActivityPub as a transport protocol that alone is not sufficient to build an application.
--->
+Freechains was designed around a [minimum API](../README.md#basics) to support
+the diverse communication patterns among people.
+A `join` command to follow groups and individuals, a `post` command to publish
+content (optionally with end-to-end encryption), a `get` command to read posts,
+and a `traverse` command to iterate on chains to discover content.
+This unified API
+A [public identity chain](chains.md#public-identity-chain) behaves more like
+Scuttlebutt, since only its owner may be allowed to post.
+Following is also asymmetric, so it's possible to build diverse social graphs
+in the same way.
+A [public forum chain](chains.md#public-forum-chain) relies on the reputation
+system and behaves more like Aether, since users receive posts from users they
+do not necessarily follow.
+Freechains also supports [private group chains](...) that circulates messages
+among trusted peers only.
 
-<!--
-https://schub.wtf/blog/2018/02/01/activitypub-one-protocol-to-rule-them-all.html
-The “X-Follows-Y” contact model
+The [reputation system](reps.md) tracks the reputation of posts and authors in
+each chain.
+It aims to (1) combat excess by restricting the number of posts, (2) highlight
+content of quality with likes, and (3) combat SPAM, fake news, and illegal
+content by demanding previous reputation from authors or by removing posts when
+their dislikes is far superior from their likes.
+However, it is a system that has never being put in practice, so its
+effectiveness is yet to be proven.
 
-With all the flexibility in both ActivityPub and AcitivtyStreams, I was really surprised to see a really fixed relationship model between actors. Users follow each other. Here, this has several implications. When Bob is following Alice, Alice will send all public activities (or all activities sent to all followers) to Bob, but Bob has no obligation to return something. While this model works fine for applications like Twitter, I do not think it is a good generic solution.
--->
+Freechains also has some inherent some limitations.
+Posts are restricted in size (currently 128kb) and each peer holds up to 10
+posts from new users waiting for approval.
+This is to prevent denial of service by flooding peers with posts without
+reputation.
+For large blobs, users may post multiple times or use links such as for IPFS
+addresses.
+Peers also must hold the full tree of posts locally to be able to validate them
+and track their reputation.
+This imposes computational and storage costs.
+Although it's possible to limit the validity of posts and prune the tree as
+time goes, full persistence is still conceptually at the core of the protocol.
+Validation also requires large headers to posts for the back links and
+signatures.
+All these overheads combined may affect the viability of the system in real
+time applications such as chats and streaming which would benefit of a more
+"fire and forget" approach.
+A not inherent current limitation is that the protocol does not verify if peers
+are actually validating and storing the actual chains.
+This would allow *freeriders* to abuse the network.
+We believe it's not hard to integrate some kind of proof of storage (e.g., ask
+the contents of some previous post) or integrate peer accounting in the
+reputation system.
 
-## Other References:
+## Other Links:
 
-- https://medium.com/@jaygraber/decentralized-social-networks-e5a7a2603f53
+- Decentralized Social Networks:
+    - https://medium.com/@jaygraber/decentralized-social-networks-e5a7a2603f53
+- IPFS and Dat:
+    - https://medium.com/decentralized-web/comparing-ipfs-and-dat-8f3891d3a603
+- Aether:
+    - https://getaether.net/docs/
+    - https://www.youtube.com/watch?v=A9zL2csO7t8&t=1105s
+    - https://getaether.net/docs/faq/voting_and_elections/
+- Matrix:
+    - https://matrix.org/docs/guides/moderation
+    - https://www.youtube.com/watch?v=AlndCl30OyI

@@ -27,10 +27,10 @@ scalable.
     - `[TODO]` [Block / Post](docs/blocks.md)
     - [Reputation System](docs/reps.md)
 - List of all [commands](docs/cmds.md).
-- `[TODO]` Comparison with [other](docs/others.md) systems.
+- Comparison with [other](docs/others.md) systems.
 - Discussion [group](https://groups.google.com/forum/#!forum/freechains) about Freechains.
 - List of [publicly available resources](docs/join.md).
-- Using an [e-mail client](https://github.com/Freechains/mail/) to interface with Freechains.
+- Using an [e-mail client](https://github.com/Freechains/mail/) to interface with Freechains (very hacky).
 - Introductory videos:
     [1/3](https://www.youtube.com/watch?v=7_jM0lgWL2c) |
     [2/3](https://www.youtube.com/watch?v=bL0yyeVz_xk) |
