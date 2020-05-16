@@ -22,19 +22,19 @@ Freechains is (intended to be) decentralized, fair, free (*as-in-speech*), free
 scalable.
 -->
 
-- Comparison with [other](docs/others.md) systems.
+- Comparison with [other](docs/others.md) systems
 - Concepts:
     - [Chain](docs/chains.md)
-    - `[TODO]` [Block / Post](docs/blocks.md)
+    - [Block / Post](docs/blocks.md) `[TODO]`
     - [Reputation System](docs/reps.md)
-- List of all [commands](docs/cmds.md).
-- Discussion [group](https://groups.google.com/forum/#!forum/freechains) about Freechains.
-- List of [publicly available resources](docs/join.md).
-- Using an [e-mail client](https://github.com/Freechains/mail/) to interface with Freechains (very hacky).
+- List of all [commands](docs/cmds.md)
+- Discussion [group](https://groups.google.com/forum/#!forum/freechains) about Freechains
+- List of [publicly available resources](docs/join.md)
+- Using an [e-mail client](https://github.com/Freechains/mail/) to interface with Freechains (very hacky)
 - Introductory videos:
     [1/3](https://www.youtube.com/watch?v=7_jM0lgWL2c) |
     [2/3](https://www.youtube.com/watch?v=bL0yyeVz_xk) |
-    [3/3](https://www.youtube.com/watch?v=APlHK6YmmFw).
+    [3/3](https://www.youtube.com/watch?v=APlHK6YmmFw)
 
 ## Install
 
