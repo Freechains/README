@@ -1,3 +1,44 @@
-# Freechains: Blocks / Posts
+# Freechains: Post / Message / Block
 
-`TODO`
+The terms *post*, *message*, and *block* are used interchangeably and they all
+represent the unit of content in Freechains.
+An author has a *message* to disseminate (e.g., a text or file) and creates a
+*post* in a [chain](chains.md), which stores it in a *block* that contains only
+that message.
+
+A block is a data structure that persists a single message in a chain, linking
+back to past messages and being linked from future messages:
+
+```
+data Block :
+    msg   : String              ; (1)
+    sign? :                     ; (2)
+        pub : HKey
+        sig : String
+    core  :                     ; (3)
+        time  : Long
+        msg   :
+            crypt : Boolean
+            hash  : Hash
+        like? :
+            hash : Hash
+            n    : Int
+        prev? : Hash
+        backs : Array<Hash>
+    hash  : Hash                ; (4)
+```
+
+<img src="block.png" align="right">
+
+The block data structure is composed of four parts:
+
+1. The actual message to be held in the block.
+2. An optional signature including the public key of the signer (`pub`) and the
+   actual signature (`sig`).
+1. The core of the block with all sensitive information about the message
+   (its creation time, if it's encrypted, its hash, if it's a like or
+   dislike), and links to previous blocks.
+4. The digest (`hash`) of the core which univocally identifies the block.
+   The digest is prefixed with the height of the block in the chain, e.g.,
+   `5_F700CC98A6BA6A562CF6272AFC1044CB0F049E2E71D1076DA3391E85EE2CE2B8`
+   (block is height `5` with digest `F700CC...`).

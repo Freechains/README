@@ -2,8 +2,8 @@
 
 A chain represents a topic in the publish-subscribe model of Freechains.
 Peers synchronize their chains to disseminate content in the network.
-A chain is a tree of messages or blocks linked from a set of heads down to the
-genesis block:
+A chain is a tree of messages or [blocks](blocks.md) linked from a set of heads
+down to the genesis block:
 
 <img src="chain.png">
 

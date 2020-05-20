@@ -24,8 +24,8 @@ scalable.
 
 - Comparison with [other](docs/others.md) systems
 - Concepts:
+    - [Post / Message / Block](docs/blocks.md) `[TODO]`
     - [Chain](docs/chains.md)
-    - [Block / Post](docs/blocks.md) `[TODO]`
     - [Reputation System](docs/reps.md)
 - List of all [commands](docs/cmds.md)
 - Discussion [group](https://groups.google.com/forum/#!forum/freechains) about Freechains
