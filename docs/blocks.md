@@ -6,10 +6,10 @@ An author has a *message* to disseminate (e.g., a text or file) and creates a
 *post* in a [chain](chains.md), which stores it in a *block* that contains only
 that message.
 
-<img src="block.png" align="right" width="500">
-
 A block is a data structure that persists a single message in a chain, linking
 back to past messages and being linked from future messages:
+
+<img src="block.png" align="right" width="500">
 
 ```
 data Block :
