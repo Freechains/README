@@ -6,6 +6,8 @@ An author has a *message* to disseminate (e.g., a text or file) and creates a
 *post* in a [chain](chains.md), which stores it in a *block* that contains only
 that message.
 
+<img src="block.png" align="right" width="200">
+
 A block is a data structure that persists a single message in a chain, linking
 back to past messages and being linked from future messages:
 
@@ -27,8 +29,6 @@ data Block :
         backs : Array<Hash>
     hash  : Hash                ; (4)
 ```
-
-<img src="block.png" align="right">
 
 The block data structure is composed of four parts:
 
