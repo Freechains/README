@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VER=v0.3.7
+VER=v0.4.0
 
 rm -Rf /tmp/freechains-build/
 rm -f  /tmp/freechains-$VER.zip
