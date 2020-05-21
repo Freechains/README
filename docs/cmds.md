@@ -1,6 +1,7 @@
 # Freechains: Command-Line Interface
 
 ```
+freechains v0.4.x
 Usage:
     freechains host create <dir> [<port>]
     freechains host start <dir>
@@ -9,7 +10,7 @@ Usage:
     freechains [options] chain join <chain> [trusted] [ [owner-only] <pub> ]
     freechains [options] chain genesis <chain>
     freechains [options] chain heads <chain> (all | linked | blocked)
-    freechains [options] chain get <chain> <hash>
+    freechains [options] chain get <chain> (block | payload) <hash>
     freechains [options] chain post <chain> (file | inline | -) [<path_or_text>]
     freechains [options] chain (like | dislike) <chain> <hash>
     freechains [options] chain reps <chain> <hash_or_pub>
@@ -179,18 +180,21 @@ freechains chain heads /sports linked
 Gets the block with the given hash.
 
 ```
-freechains [options] chain get <chain> <hash>
+freechains [options] chain get <chain> (block | payload) <hash>
 ```
 
 - `<chain>`: name of the chain
+- `(block | payload)`
+    - `block`:   gets information about the block
+    - `payload`: gets the actual message in the block
 - `<hash>`:  hash of the block to get
 - `--crypt=<key>`: decrypts post with given shared or private key
 
 - Examples:
 
 ```
-freechains chain get / 1_CAC69BBC21388FA75F808B9AF0D652D059DEFF49FEE6B2E7E432C3F6DFD72C7A
-freechains chain get /trusted-friends 2_CBBBE2CB4... --crypt=<shared-key>
+freechains chain get / block 1_CAC69BBC21388FA75F808B9AF0D652D059DEFF49FEE6B2E7E432C3F6DFD72C7A
+freechains chain get /trusted-friends payload 2_CBBBE2CB4... --crypt=<shared-key>
 ```
 
 ### `chain post`

@@ -123,7 +123,7 @@ then be traversed as follows:
 ```
 $ freechains --host=localhost:8331 chain genesis /chat
 0_A80B5390F7CF66A8781F42AEB68912F2745FC026A71885D7A3CB70AB81764FB2
-$ freechains --host=localhost:8331 chain get /chat 0_A80B5390F7CF66A8781F42AEB68912F2745FC026A71885D7A3CB70AB81764FB2
+$ freechains --host=localhost:8331 chain get /chat block 0_A80B5390F7CF66A8781F42AEB68912F2745FC026A71885D7A3CB70AB81764FB2
 {
     ...
     "fronts": [
@@ -131,7 +131,7 @@ $ freechains --host=localhost:8331 chain get /chat 0_A80B5390F7CF66A8781F42AEB68
     ],
     ...
 }
-$ freechains --host=localhost:8331 chain get /chat 1_1D5D2B146B49AF22F7E738778F08E678D48C6DAAF84AF4128A17D058B6F0D852
+$ freechains --host=localhost:8331 chain get /chat block 1_1D5D2B146B49AF22F7E738778F08E678D48C6DAAF84AF4128A17D058B6F0D852
 {
     "immut": {
         ...
@@ -139,12 +139,13 @@ $ freechains --host=localhost:8331 chain get /chat 1_1D5D2B146B49AF22F7E738778F0
             "0_A80B5390F7CF66A8781F42AEB68912F2745FC026A71885D7A3CB70AB81764FB2"
         ]
     },
-    "pay": "Hello World!",
     "fronts": [
         "2_DFDC784B4609F16F4487163CAC531A9FE6A0C588DA39D597769DA279AB53C862"
     ],
     ...
 }
+$ freechains --host=localhost:8331 chain get /chat payload 1_1D5D2B146B49AF22F7E738778F08E678D48C6DAAF84AF4128A17D058B6F0D852
+Hello World!
 ```
 
 <!--
