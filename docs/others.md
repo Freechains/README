@@ -2,7 +2,7 @@
 
 *(If any information here is innaccurate, please open an issue.)*
 
-Many other number of systems have been proposed for content dissemination in a
+Many other systems have been proposed for content dissemination in a
 distributed setting.
 Here we will consider publish-subscribe middlewares, federated applications,
 and fully peer-to-peer systems.
