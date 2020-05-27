@@ -239,8 +239,8 @@ The [reputation system](reps.md) tracks the quality of posts and authors inside
 each chain.
 It aims to (1) combat excess by restricting the number of posts, (2) highlight
 content of quality with likes, and (3) combat SPAM, fake news, and illegal
-content by demanding previous reputation from authors to post or by removing
-existing posts when their likes/dislikes ratio is too negative.
+content by demanding reputation to post and by removing posts when their
+likes/dislikes ratio is too negative.
 However, it is a system that has never being put into practice, so its
 effectiveness is yet to be proven.
 
