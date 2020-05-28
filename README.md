@@ -49,11 +49,9 @@ Then, you are ready to install `freechains`:
 ```
 $ wget https://github.com/Freechains/README/releases/download/v0.4.1/install-v0.4.1.sh
 
-# *either* unzip to current directory (must be in the PATH)
-$ sh install-v0.4.1.sh .
-
-# *or* unzip to system directory
-$ sudo sh install-v0.4.1.sh /usr/local/bin
+# choose one:
+$ sh install-v0.4.1.sh .                    # either unzip to current directory (must be in the PATH)
+$ sudo sh install-v0.4.1.sh /usr/local/bin  # or     unzip to system  directory
 ```
 
 ## Basics
