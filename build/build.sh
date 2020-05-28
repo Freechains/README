@@ -23,14 +23,6 @@
 VER=v0.4.1
 DIR=/tmp/freechains-build/
 
-# generate jvm
-
-cd /data/IntelliJIDEAProjects/jvm/src/main/make/
-make install
-cd -
-
-# copy files back
-
 rm -Rf $DIR
 rm -f  /tmp/freechains-$VER.zip
 mkdir -p $DIR
