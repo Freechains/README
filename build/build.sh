@@ -20,7 +20,8 @@
 # - title  = <version>
 # - Attach = { .zip, install.sh }
 
-VER=v0.4.0
+VER=v0.4.1
+DIR=/tmp/freechains-build/
 
 # generate jvm
 
@@ -28,24 +29,17 @@ cd /data/IntelliJIDEAProjects/jvm/src/main/make/
 make install
 cd -
 
-# generate lua
-
-#cd /data/freechains/lua
-#make install
-#cd -
-
 # copy files back
 
-rm -Rf /tmp/freechains-build/
-rm /tmp/freechains-$VER.zip
+rm -Rf $DIR
+rm -f  /tmp/freechains-$VER.zip
+mkdir -p $DIR
 
-mkdir -p /tmp/freechains-build/lua/
-
-cp /usr/local/bin/Freechains.jar /usr/local/bin/freechains /tmp/freechains-build/
-#cp /usr/local/share/lua/5.3/freechains/* /tmp/freechains-build/lua/
+cp /usr/local/bin/Freechains.jar /usr/local/bin/freechains $DIR
 
 cd /tmp/
 zip freechains-$VER.zip -r freechains-build/
 
 cd -
 cp /tmp/freechains-$VER.zip .
+cp install.sh install-$VER.sh

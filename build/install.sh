@@ -1,16 +1,24 @@
 #!/bin/sh
 
-VER=v0.4.0
+VER=v0.4.1
+DIR=freechains-build/
 
-rm -Rf /tmp/freechains-build/
-rm -f  /tmp/freechains-$VER.zip
+if [ -z "$1" ]
+then
+    echo "No installation directory supplied..."
+    exit 1
+fi
 
-cd /tmp/
+rm -Rf $DIR               2> /dev/null
+rm -f freechains-$VER.zip 2> /dev/null
+
+echo -n Downloading...
 wget -nv https://github.com/Freechains/README/releases/download/$VER/freechains-$VER.zip
 # --show-progress --progress=bar:force
+
+echo -n Unziping...
 unzip freechains-$VER.zip
 
-cd /tmp/freechains-build/
-cp Freechains.jar freechains /usr/local/bin/
-#mkdir -p /usr/local/share/lua/5.3/freechains/
-#cp lua/* /usr/local/share/lua/5.3/freechains/
+echo -n Copying...
+cp $DIR/* $1
+rm -Rf $DIR 2> /dev/null
