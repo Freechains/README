@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VER=v0.4.1
+VER=v0.5.0
 DIR=freechains-build/
 
 if [ -z "$1" ]
