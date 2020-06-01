@@ -1,3 +1,10 @@
+v0.5.x (jun/20)
+-------------
+
+- New set of `peer` commands: `ping`, `chains`, `send`, `recv` (`send`/`recv` removed from `chain`).
+- New set of `chains` commands: `join`, `leave`, `list`, `listen` (`join` removed from `chain`).
+- Changed chains directory structure to avoid hierarchy: `/` is substituted by `_` in the names.
+
 v0.4.x (may/20)
 -------------
 

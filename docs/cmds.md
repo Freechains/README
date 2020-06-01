@@ -1,13 +1,19 @@
 # Freechains: Command-Line Interface
 
 ```
-freechains v0.4.x
+freechains v0.5.x
 Usage:
     freechains host create <dir> [<port>]
     freechains host start <dir>
     freechains [options] host stop
+
     freechains [options] crypto create (shared | pubpvt) <passphrase>
-    freechains [options] chain join <chain> [trusted] [ [owner-only] <pub> ]
+
+    freechains [options] chains join <chain> [trusted] [ [owner-only] <pub> ]
+    freechains [options] chains leave <chain>
+    freechains [options] chains list
+    freechains [options] chains listen
+
     freechains [options] chain genesis <chain>
     freechains [options] chain heads <chain> (all | linked | blocked)
     freechains [options] chain get <chain> (block | payload) <hash>
@@ -17,7 +23,10 @@ Usage:
     freechains [options] chain remove <chain> <hash>
     freechains [options] chain traverse <chain> (all | linked) <hashes>...
     freechains [options] chain listen <chain>
-    freechains [options] chain (send | recv) <chain> <host:port>
+
+    freechains [options] peer ping <host:port>
+    freechains [options] peer chains <host:port>
+    freechains [options] peer (send | recv) <host:port> <chain>
 
 Options:
     --help              [none]            displays this help
@@ -25,7 +34,7 @@ Options:
     --host=<addr:port>  [all]             sets address and port to connect [default: localhost:8330]
     --sign=<pvtkey>     [post|(dis)like]  signs post with given private key
     --crypt=<key>       [get|post]        (de|en)crypts post with given shared or private key
-    --why=<text>        [(dis)like]       reason for the like or dislike
+    --why=<text>        [(dis)like]       explains reason for the like
 
 More Information:
 
@@ -113,14 +122,14 @@ freechains crypto create shared "My very strong password"
 freechains crypto create pubpvt "My very strong password"
 ```
 
-## Chain
+## Chains
 
-### `chain join`
+### `chains join`
 
 Prepares host to serve a chain.
 
 ```
-freechains [options] chain join <chain> [trusted] [ [owner-only] <pub> ]
+freechains [options] chains join <chain> [trusted] [ [owner-only] <pub> ]
 ```
 
 - `<chain>`:    name of the chain (must begin with `/`)
@@ -132,12 +141,62 @@ freechains [options] chain join <chain> [trusted] [ [owner-only] <pub> ]
 - Examples:
 
 ```
-freechains chain join /
-freechains chain join /sports
-freechains chain join /obama B2853F4570903EF3ECC941F3497C08EC9FB9B03C4154D9B27FF3E331BC7B6431
-freechains chain join /friends trusted
-freechains chain join /cnn owner-only C1733F457A90DEF3ECC941F349DCA8EC9FB9CA3C41D4D9B27FF3EDD1CC3B6431
+freechains chains join /
+freechains chains join /sports
+freechains chains join /obama B2853F4570903EF3ECC941F3497C08EC9FB9B03C4154D9B27FF3E331BC7B6431
+freechains chains join /friends trusted
+freechains chains join /cnn owner-only C1733F457A90DEF3ECC941F349DCA8EC9FB9CA3C41D4D9B27FF3EDD1CC3B6431
 ```
+
+### `chains leave`
+
+Leaves a chain removing all of its data.
+
+```
+freechains [options] chains leave <chain>
+```
+
+- `<chain>`:    name of the chain (must begin with `/`)
+
+- Examples:
+
+```
+freechains chains leave /
+freechains chains leave /B2853F4570903EF3ECC941F3497C08EC9FB9B03C4154D9B27FF3E331BC7B6431
+```
+
+### `chains list`
+
+Lists all local chains.
+
+```
+freechains [options] chains list
+```
+
+- Examples:
+
+```
+freechains chains list
+```
+
+### `chains listen`
+
+Listens for incoming blocks from all chains.
+
+```
+freechains [options] chains listen
+```
+
+The command never terminates and outputs the chain and number of new blocks as
+they arrive.
+
+- Examples:
+
+```
+freechains listen
+```
+
+## Chain
 
 ### `chain genesis`
 
@@ -330,7 +389,7 @@ freechains [options] chain listen <chain>
 
 - `<chain>`: name of the chain
 
-The command never terminates and outputs the hash of new blocks as they arrive.
+The command never terminates and outputs the number of new blocks as they arrive.
 
 - Examples:
 
@@ -338,19 +397,47 @@ The command never terminates and outputs the hash of new blocks as they arrive.
 freechains listen /
 ```
 
-### `chain (send | recv)`
+## Peer
 
-Synchronize the given chain with a remote peer.
+### `peer ping`
+
+Counts the round-trip time to a given peer.
 
 ```
-freechains [options] chain (send | recv) <chain> <host:port>
+freechains [options] peer ping <host:port>
 ```
 
-- `<chain>`: name of the chain
+- `<host:port>`: remote peer to ping
+
+### `peer chains`
+
+Gets the available chains from a given peer.
+
+```
+freechains [options] peer chains <host:port>
+```
+
+- `<host:port>`: remote peer to get the chains
+
+- Examples:
+
+```
+freechains peer chains 10.1.1.2
+```
+
+### `peer (send | recv)`
+
+Synchronizes a chain with a given peer.
+
+```
+freechains [options] peer (send | recv) <host:port> <chain>
+```
+
 - `(send | recv)`
     - `send`: sends   missing blocks to   remote peer
     - `recv`: receive missing blocks from remote peer
-- `<host:port>`: remote host to synchronize
+- `<host:port>`: remote peer to synchronize
+- `<chain>`: name of the chain
 
 A `send` started in host `A` passing host `B` is equivalent to a
   `recv` started in host `B` passing host `A`.
@@ -358,6 +445,6 @@ A `send` started in host `A` passing host `B` is equivalent to a
 - Examples:
 
 ```
-freechains chain send / 10.1.1.2
-freechains --host=10.1.1.2 chain recv / 10.1.1.1
+freechains peer send 10.1.1.2 /
+freechains --host=10.1.1.2 peer recv 10.1.1.1 /
 ```
