@@ -61,11 +61,11 @@ The basic API of Freechains is very straightforward:
 - `host create`:     instantiates a peer locally (executed only once)
 - `host start`:      starts the local peer to serve requests (executed on every restart)
 - `crypto create`:   creates an identity
-- `chain join`:      joins a chain locally to post and read content
+- `chains join`:     joins a chain locally to post and read content
 - `chain post`:      posts to a chain locally
 - `chain get`:       reads a post locally
 - `chain traverse`:  iterates over (discovers) local posts
-- `chain send/recv`: synchronizes a local chain with a remote peer
+- `peer send/recv`:  synchronizes a local chain with a remote peer
 
 Follows a step-by-step execution:
 
@@ -86,7 +86,7 @@ $ freechains host start /tmp/myhost
 - Join the `/chat` chain:
 
 ```
-$ freechains chain join /chat
+$ freechains chains join /chat
 ```
 
 - Create an identity:
@@ -114,8 +114,8 @@ $ freechains chain post /chat inline "I am here!"   --sign=$PVT
 $ freechains host create /tmp/othost 8331
 $ freechains host start /tmp/othost
 # switch to another terminal
-$ freechains --host=localhost:8331 chain join /chat
-$ freechains --host=localhost:8330 chain send /chat localhost:8331
+$ freechains --host=localhost:8331 chains join /chat
+$ freechains --host=localhost:8330 peer send localhost:8331 /chat
 ```
 
 The last command sends all new posts from `8330` to `8331`, which can

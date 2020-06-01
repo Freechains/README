@@ -36,10 +36,10 @@ has identifier `HASH(chain) = D7E6808CF1DF8D4A2D5B93A1590874464BC91B54245EDBA31F
 The genesis block of the chain has the same identifier of the chain itself.
 This means that any peer in the network using the same parameters to join a
 chain are sharing the same chain.
-The [command](cmds.md#chain-join) to join a chain is as follows:
+The [command](cmds.md#chains-join) to join a chain is as follows:
 
 ```
-freechains chain join <name> [trusted] [ [owner-only] <pub> ]
+freechains chains join <name> [trusted] [ [owner-only] <pub> ]
 ```
 
 Note that Freechains provides a `join` instead a `create` command.
@@ -103,7 +103,7 @@ As an example, suppose the company *ACME* wants to advertise its products with
 disabled feedback from consumers:
 
 ```
-freechains chain join /acme owner-only A941F3...
+freechains chains join /acme owner-only A941F3...
 ```
 
 To post in the chain, the public identity should always sign its posts:
@@ -117,7 +117,7 @@ key as the chain name.
 For example, my own chain is instantiated as follows:
 
 ```
-freechains chain join /A2885F4570903EF5EBA941F3497B08EB9FA9A03B4284D9B27FF3E332BA7B6431 A2885F4570903EF5EBA941F3497B08EB9FA9A03B4284D9B27FF3E332BA7B6431
+freechains chains join /A2885F4570903EF5EBA941F3497B08EB9FA9A03B4284D9B27FF3E332BA7B6431 A2885F4570903EF5EBA941F3497B08EB9FA9A03B4284D9B27FF3E332BA7B6431
 ```
 
 ## Private Group Chain
@@ -130,7 +130,7 @@ in `1<-` "self communication" such as a personal to-do list and backups.
 A private chain uses the `trusted` parameter when joining:
 
 ```
-freechains chain join /friends trusted
+freechains chains join /friends trusted
 ```
 
 In a private group chain, all users have infinite reputation and they are not
