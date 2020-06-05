@@ -20,53 +20,91 @@ the same in both peers.
 As an additional restriction discussed in the [reputation system](reps.md), a
 chain can only have single block of height one.
 
-A chain is univocally identified by a unique hash code from four parameters:
-
-- `name`:       name of the chain (string starting with `/`)
-- `trusted`:    if formed of trusted peers only (a boolean value)
-- `pub`:        public key of the chain owner (hexadecimal string, `empty` if unowned)
-- `owner-only`: if only the owner is allowed to post (a boolean value, `false` if unowned)
-
-<!-- BLAKE2b Curve25519 -->
-
-For example, a chain with parameters
-    `chain = { name="/myself", trusted=false, pubkey="A2885F...", oonly=false }`
-has identifier `HASH(chain) = D7E6808CF1DF8D4A2D5B93A1590874464BC91B54245EDBA31F0482660EF229F1`.
-
+A chain is univocally identified by a unique hash code from its own name.
+For example, the chain `#chat` has identifier
+`HASH(chain) = A95B969D21FC983337B1D1B3EAF38421B9E41A03A14DBCA088435590A22D585C`.
 The genesis block of the chain has the same identifier of the chain itself.
 This means that any peer in the network using the same parameters to join a
 chain are sharing the same chain.
 The [command](cmds.md#chains-join) to join a chain is as follows:
 
 ```
-freechains chains join <name> [trusted] [ [owner-only] <pub> ]
+freechains chains join <name>
 ```
 
 Note that Freechains provides a `join` instead a `create` command.
 The reason is that chains have no "creators", since different users in
 different hosts at different moments can issue the same command to reach
 exactly the same initial state.
-Joining a chain means to reserve a local space for blocks and become available
-to synchronize with other peer.
+Joining a chain means to reserve a local space for blocks and to become
+available to synchronize with other peers.
 
-Based on the chain parameters, Freechains supports three types of chains with
-different purposes:
+Freechains supports three types of chains with different purposes:
 
-- *Public Identity Chain:*
-    - Parameter `pub` is nonempty.
-    - `1->N` and `1<-N` communication.
-    - A public identity broadcasts content to an audience (`1->N`) with
-      optional feedback (`1<-N`, if parameter `oonly` is `false`).
-    - Examples: news site, streaming service, public profile in social media.
-- *Private Group Chain:*
-    - Parameter `trusted` is `true`.
-    - `1<->1`, `N<->N`, `1<-` private communication.
-    - Trusted communication between pairs, groups, and alone (with itself).
-    - Examples: e-mail, family WhatsApp group, backup.
 - *Public Forum Chain:*
     - `N<->N` public communication.
     - Public communication among untrusted participants.
     - Examples: Q&A forums, chats, consumer-to-consumer sales.
+- *Private Group Chain:*
+    - `1<->1`, `N<->N`, `1<-` private communication.
+    - Trusted communication between pairs, groups, and alone (with itself).
+    - Examples: e-mail, family WhatsApp group, backup.
+- *Public Identity Chain:*
+    - `1->N` and `1<-N` communication.
+    - A public identity broadcasts content to an audience (`1->N`) with
+      optional feedback (`1<-N`).
+    - Examples: news site, streaming service, public profile in social media.
+
+The type of the chain is determined by the prefix in its name:
+
+- `#`: public forum (e.g., `#chat`)
+- `$`: private group (e.g., `$family`)
+- `@`: public identity (e.g., `@B2853F4570903EF3ECC941F3497C08EC9FB9B03C4154D9B27FF3E331BC7B6431`)
+    - if second character is `!`, only the chain owner can post
+    - the rest of the name is the owner's public key
+
+<!-- BLAKE2b Curve25519 -->
+
+## Public Forum Chain
+
+In a public forum chain, messages circulate among untrusted possibly malicious
+users and peers (`N<->N` communication).
+For this reason, chains of this type must rely on the
+[reputation system](docs/reps.md) of Freechains to be viable in a completely
+decentralized setting.
+Without any control, the contents of a public forum chain are at mercy of
+excess, SPAM, fake news, illegal content, and abusive behavior.
+
+A public forum chain uses the prefix `#` in its name:
+
+```
+freechains chains join "#sports"
+```
+
+## Private Group Chain
+
+In a private group chain, messages circulate among trusted peers only.
+It can be used in `1<-1` communication such as e-mail conversations, `N<->N`
+communication in small groups such as for family and close friends, and also
+in `1<-` "self communication" such as a personal to-do list and backups.
+
+A private chain uses the prefix `$` in its name:
+
+```
+freechains chains join "$friends"
+```
+
+In a private group chain, all users have infinite reputation and they are not
+even required to sign messages.
+Since peers communicate over the Internet, it is recommended to use end-to-end
+encryption for the messages:
+
+```
+freechains chain "$friends" post inline "Crypted message to my friends" --crypt=<shared-key>
+```
+
+The key has to be shared among the trusted friends by other means, such as
+through their public identity chains.
 
 ## Public Identity Chain
 
@@ -78,20 +116,25 @@ An organization can be a newspaper publishing news, a company advertising its
 products, a streaming service broadcasting shows, or even a government
 sanctioning laws.
 
-A public identity chain is a chain with a nonempty `pub` parameter which is the
-public key of the chain owner holding the associated private key.
+A public identity chain uses the prefix `@` in its name:
+
+```
+freechains chains join "@B2853F4570903EF3ECC941F3497C08EC9FB9B03C4154D9B27FF3E331BC7B6431"
+```
+
+The rest of the name is public key of the chain owner holding the associated
+private key.
 The chain owner has infinite [reputation](reps.md) and other users may be
-allowed or prohibited to post depending on the `owner-only` parameter.
+prohibited to post if the prefix `@!` is used.
 If other users are allowed to post, they may encrypt messages with the owner's
 public key so that only s/he can read it (`1<-N` communication).
 
-A public identity is identified by its public key
-[created](cmds.md#crypto-create) from a secret passphrase along with the
-associated private key:
+A public identity can be [generated](cmds.md#crypto-create) from a secret
+passphrase to yield a public-private key pair:
 
 ```
 $ freechains crypto create pubpvt <my-very-strong-passphrase>
-A941F3... 27FF3E332BAB...  # output from the command: public-key private-key
+59BD9E... 503627377824...  # output from the command: public-key private-key
 ```
 
 The public identity should keep its private key in secret and disclose the
@@ -99,58 +142,15 @@ public key to the target audience.
 Then, both the public identity and target audience should use the same
 parameters to join the chain.
 
-As an example, suppose the company *ACME* wants to advertise its products with
-disabled feedback from consumers:
+As an example, suppose a company with the generated keys wants to advertise its
+products with disabled feedback from consumers:
 
 ```
-freechains chains join /acme owner-only A941F3...
+freechains chains join "@!59BD9E..."
 ```
 
 To post in the chain, the public identity should always sign its posts:
 
 ```
-freechains --sign=27FF3E332BAB... chain post /acme inline 'Hello World!"
+freechains --sign=503627377824... chain "@!59BD9E..." post inline 'Hello World!"
 ```
-
-As a convention, public identities from ordinary users should use its public
-key as the chain name.
-For example, my own chain is instantiated as follows:
-
-```
-freechains chains join /A2885F4570903EF5EBA941F3497B08EB9FA9A03B4284D9B27FF3E332BA7B6431 A2885F4570903EF5EBA941F3497B08EB9FA9A03B4284D9B27FF3E332BA7B6431
-```
-
-## Private Group Chain
-
-In a private group chain, messages circulate among trusted peers only.
-It can be used in `1<-1` communication such as e-mail conversations, `N<->N`
-communication in small groups such as for family and close friends, and also
-in `1<-` "self communication" such as a personal to-do list and backups.
-
-A private chain uses the `trusted` parameter when joining:
-
-```
-freechains chains join /friends trusted
-```
-
-In a private group chain, all users have infinite reputation and they are not
-even required to sign messages.
-Since peers communicate over the Internet, it is recommended to use end-to-end
-encryption for the messages:
-
-```
-freechains chain post /friends inline "Crypted message to my friends" --crypt=<shared-key>
-```
-
-The key has to be shared among the trusted friends by other means, such as
-through their public identity chains.
-
-## Public Forum Chain
-
-In a public forum chain, messages circulate among untrusted possibly malicious
-users and peers (`N<->N` communication).
-For this reason, chains of this type must rely on the
-[reputation system](docs/reps.md) of Freechains to be viable in a completely
-decentralized setting.
-Without any control, the contents of a public forum chain are at mercy of
-excess, SPAM, fake news, illegal content, and abusive behavior.

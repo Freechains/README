@@ -10,9 +10,8 @@
 #   - wget ...
 #
 # BUILD:
-# $ sudo ./build.sh
+# $ ./build.sh
 # $ ls -l *.zip
-#
 #
 # UPLOAD:
 # - https://github.com/Freechains/README/releases/new
@@ -20,7 +19,7 @@
 # - title  = <version>
 # - Attach = { .zip, install.sh }
 
-VER=v0.5.0
+VER=v0.6.0
 DIR=/tmp/freechains-build/
 
 rm -Rf $DIR

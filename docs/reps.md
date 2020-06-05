@@ -10,7 +10,8 @@ transferred in many ways:
 
 - Create:
     - The first post in the chain accounts *+30 reps* to its author.
-    - A post older than 24h, aka *consolidated post*, accounts *+1 rep* to its author.
+    - A post older than 24h, aka *consolidated post*, accounts *+1 rep* to its
+      author.
 - Spend:
     - A post younger than 24h, aka *new post*, accounts *-1 rep* to its author.
 - Transfer:
@@ -34,11 +35,11 @@ transferred in many ways:
     - For any of the rules, only posts younger than 90 days are considered.
 
 - Special cases:
-    - In a [public identity chain](chains.md#TODO), its owner has infinite
+    - In a [private group chain](chains.md#public-identity-chain), all users have infinite
+      reputation.
+    - In a [public identity chain](chains.md#private-group-chain), its owner has infinite
       reputation. Other users might be allowed to post or not. If allowed, they
       follow the general rules above.
-    - In a [private group chain](chains.md#TODO), all users have infinite
-      reputation.
 
 See also the command-line interface for
     [likes and dislikes](cmds.md#chain-like--dislike) to posts

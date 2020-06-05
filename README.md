@@ -30,7 +30,9 @@ scalable.
 - List of all [commands](docs/cmds.md)
 - Discussion [group](https://groups.google.com/forum/#!forum/freechains) about Freechains
 - List of [publicly available resources](docs/join.md)
+<!--
 - Using an [e-mail client](https://github.com/Freechains/mail/) to interface with Freechains (very hacky)
+-->
 - Introductory videos:
     [1/3](https://www.youtube.com/watch?v=7_jM0lgWL2c) |
     [2/3](https://www.youtube.com/watch?v=bL0yyeVz_xk) |
@@ -47,18 +49,17 @@ $ sudo apt install default-jre libsodium23
 Then, you are ready to install `freechains`:
 
 ```
-$ wget https://github.com/Freechains/README/releases/download/v0.5.0/install-v0.5.0.sh
+$ wget https://github.com/Freechains/README/releases/download/v0.6.0/install-v0.6.0.sh
 
 # choose one:
-$ sh install-v0.5.0.sh .                    # either unzip to current directory (must be in the PATH)
-$ sudo sh install-v0.5.0.sh /usr/local/bin  # or     unzip to system  directory
+$ sh install-v0.6.0.sh .                    # either unzip to current directory (must be in the PATH)
+$ sudo sh install-v0.6.0.sh /usr/local/bin  # or     unzip to system  directory
 ```
 
 ## Basics
 
 The basic API of Freechains is very straightforward:
 
-- `host create`:     instantiates a peer locally (executed only once)
 - `host start`:      starts the local peer to serve requests (executed on every restart)
 - `crypto create`:   creates an identity
 - `chains join`:     joins a chain locally to post and read content
@@ -69,12 +70,6 @@ The basic API of Freechains is very straightforward:
 
 Follows a step-by-step execution:
 
-- Create a `freechains` host:
-
-```
-$ freechains host create /tmp/myhost
-```
-
 - Start host:
 
 ```
@@ -83,10 +78,10 @@ $ freechains host start /tmp/myhost
 
 - Switch to another terminal.
 
-- Join the `/chat` chain:
+- Join the `#chat` chain:
 
 ```
-$ freechains chains join /chat
+$ freechains chains "#chat" join
 ```
 
 - Create an identity:
@@ -100,34 +95,32 @@ $ PVT=96700ACD1128035FFEF5DC264DF87D5FEE45FF15E2A880708AE40675C9AD039EEB172ED6C7
 - Post some content:
 
 ```
-$ freechains chain post /chat inline "Hello World!" --sign=$PVT
-$ freechains chain post /chat inline "I am here!"   --sign=$PVT
+$ freechains chain "#chat" post inline "Hello World!" --sign=$PVT
+$ freechains chain "#chat" post inline "I am here!"   --sign=$PVT
 ```
 
 - Communicate with other peers:
-   - Create another `freechains` host.
-   - Start new host.
-   - Join the `/chat` chain.
-   - Synchronize from the first host.
+   - Start another `freechains` host.
+   - Join the `"#chat"` chain.
+   - Synchronize with the first host.
 
 ```
-$ freechains host create /tmp/othost 8331
-$ freechains host start /tmp/othost
+$ freechains host start /tmp/othost 8331
 # switch to another terminal
-$ freechains --host=localhost:8331 chains join /chat
-$ freechains --host=localhost:8330 peer send localhost:8331 /chat
+$ freechains --host=localhost:8331 chains join "#chat"
+$ freechains --host=localhost:8330 peer localhost:8331 send "#chat"
 ```
 
 The last command sends all new posts from `8330` to `8331`, which can
 then be traversed as follows:
-    - Identify the predefined "genesis" post of `/chat`.
+    - Identify the predefined "genesis" post of `"#chat"`.
     - Acquire it to see what comes next.
     - Iterate over its `fronts` posts recursively.
 
 ```
-$ freechains --host=localhost:8331 chain genesis /chat
+$ freechains --host=localhost:8331 chain "#chat" genesis
 0_A80B5390F7CF66A8781F42AEB68912F2745FC026A71885D7A3CB70AB81764FB2
-$ freechains --host=localhost:8331 chain get /chat block 0_A80B5390F7CF66A8781F42AEB68912F2745FC026A71885D7A3CB70AB81764FB2
+$ freechains --host=localhost:8331 chain "#chat" get block 0_A80B5390F7CF66A8781F42AEB68912F2745FC026A71885D7A3CB70AB81764FB2
 {
     ...
     "fronts": [
@@ -135,7 +128,7 @@ $ freechains --host=localhost:8331 chain get /chat block 0_A80B5390F7CF66A8781F4
     ],
     ...
 }
-$ freechains --host=localhost:8331 chain get /chat block 1_1D5D2B146B49AF22F7E738778F08E678D48C6DAAF84AF4128A17D058B6F0D852
+$ freechains --host=localhost:8331 chain "#chat" get block 1_1D5D2B146B49AF22F7E738778F08E678D48C6DAAF84AF4128A17D058B6F0D852
 {
     "immut": {
         ...
@@ -148,7 +141,7 @@ $ freechains --host=localhost:8331 chain get /chat block 1_1D5D2B146B49AF22F7E73
     ],
     ...
 }
-$ freechains --host=localhost:8331 chain get /chat payload 1_1D5D2B146B49AF22F7E738778F08E678D48C6DAAF84AF4128A17D058B6F0D852
+$ freechains --host=localhost:8331 chain "#chat" get payload 1_1D5D2B146B49AF22F7E738778F08E678D48C6DAAF84AF4128A17D058B6F0D852
 Hello World!
 ```
 
