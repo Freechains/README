@@ -29,7 +29,7 @@ chain are sharing the same chain.
 The [command](cmds.md#chains-join) to join a chain is as follows:
 
 ```
-freechains chains join <name>
+freechains chains join <chain-name> [<shared-key>]
 ```
 
 Note that Freechains provides a `join` instead a `create` command.
@@ -47,7 +47,7 @@ Freechains supports three types of chains with different purposes:
     - Examples: Q&A forums, chats, consumer-to-consumer sales.
 - *Private Group Chain:*
     - `1<->1`, `N<->N`, `1<-` private communication.
-    - Trusted communication between pairs, groups, and alone (with itself).
+    - Secure communication between pairs, groups, and alone (with itself).
     - Examples: e-mail, family WhatsApp group, backup.
 - *Public Identity Chain:*
     - `1->N` and `1<-N` communication.
@@ -59,6 +59,7 @@ The type of the chain is determined by the prefix in its name:
 
 - `#`: public forum (e.g., `#chat`)
 - `$`: private group (e.g., `$family`)
+    - requires a `<shared-key>` on join
 - `@`: public identity (e.g., `@B2853F4570903EF3ECC941F3497C08EC9FB9B03C4154D9B27FF3E331BC7B6431`)
     - if second character is `!`, only the chain owner can post
     - the rest of the name is the owner's public key
@@ -83,7 +84,8 @@ freechains chains join "#sports"
 
 ## Private Group Chain
 
-In a private group chain, messages circulate among trusted peers only.
+In a private group chain, all messages are encrypted using a key shared by
+trusted peers only.
 It can be used in `1<-1` communication such as e-mail conversations, `N<->N`
 communication in small groups such as for family and close friends, and also
 in `1<-` "self communication" such as a personal to-do list and backups.
@@ -91,16 +93,20 @@ in `1<-` "self communication" such as a personal to-do list and backups.
 A private chain uses the prefix `$` in its name:
 
 ```
-freechains chains join "$friends"
+freechains chains join "$friends" 8889BB68FB44065BBEC8D7441C53D50362737782445ADF0EB167A5DEF354D638
 ```
 
 In a private group chain, all users have infinite reputation and they are not
 even required to sign messages.
-Since peers communicate over the Internet, it is recommended to use end-to-end
-encryption for the messages:
+All messages are automatically encrypted on creation and decrypted on receipt
+using the shared key.
+
+The shared key can be [generated](cmds.md#crypto-create) from a secret
+passphrase:
 
 ```
-freechains chain "$friends" post inline "Crypted message to my friends" --crypt=<shared-key>
+$ freechains crypto create shared <my-very-strong-passphrase>
+8889BB68FB44065BBEC8D7441C53D50362737782445ADF0EB167A5DEF354D638
 ```
 
 The key has to be shared among the trusted friends by other means, such as
@@ -134,7 +140,7 @@ passphrase to yield a public-private key pair:
 
 ```
 $ freechains crypto create pubpvt <my-very-strong-passphrase>
-59BD9E... 503627377824...  # output from the command: public-key private-key
+59BD9E... 8889BB68FB44...  # output from the command: public-key private-key
 ```
 
 The public identity should keep its private key in secret and disclose the

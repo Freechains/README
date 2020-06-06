@@ -6,10 +6,11 @@ freechains v0.6
 Usage:
     freechains host start <dir> [<port>]
     freechains host stop
+    freechains host now <time>
 
     freechains crypto create (shared | pubpvt) <passphrase>
 
-    freechains chains join  <chain>
+    freechains chains join  <chain> [<shared>]
     freechains chains leave <chain>
     freechains chains list
     freechains chains listen
@@ -31,9 +32,10 @@ Usage:
 Options:
     --help              [none]            displays this help
     --version           [none]            displays version information
-    --host=<addr:port>  [all]             sets address and port to connect [default: localhost:8330]
-    --sign=<pvtkey>     [post|(dis)like]  signs post with given private key
-    --crypt=<key>       [get|post]        (de|en)crypts post with given shared or private key
+    --host=<addr:port>  [all]             sets address and port to connect [default: localhost:${PORT_8330}]
+    --sign=<pvt>        [post|(dis)like]  signs post with given private key
+    --encrypt           [post]            encrypts post with public key (only in public identity chains)
+    --decrypt=<pvt>]    [get]             decrypts post with private key (only in public identity chains)
     --why=<text>        [(dis)like]       explains reason for the like
 
 More Information:
@@ -111,7 +113,7 @@ freechains crypto create pubpvt "My very strong password"
 Prepares host to serve a chain.
 
 ```
-freechains chains join <chain>
+freechains chains join <chain> [<shared>]
 ```
 
 - `<chain>`: name of the chain, type is determined by its starting characters:
@@ -120,6 +122,7 @@ freechains chains join <chain>
   - `@`: public identity
     - if second character is `!`, only the chain owner can post
     - the rest of the name is the owner's public key
+- `<shared>`: shared key for a private group
 
 - Examples:
 
@@ -127,7 +130,7 @@ freechains chains join <chain>
 freechains chains join "#"
 freechains chains join "#sports"
 freechains chains join "@B2853F4570903EF3ECC941F3497C08EC9FB9B03C4154D9B27FF3E331BC7B6431"
-freechains chains join "\$friends"
+freechains chains join "\$friends" 8889BB68FB44065BBEC8D7441C53D50362737782445ADF0EB167A5DEF354D638
 freechains chains join "@!C1733F457A90DEF3ECC941F349DCA8EC9FB9CA3C41D4D9B27FF3EDD1CC3B6431"
 ```
 
@@ -230,13 +233,16 @@ freechains chain <name> get (block | payload) <hash>
     - `block`:   gets information about the block
     - `payload`: gets the actual message in the block
 - `<hash>`:  hash of the block to get
-- `--crypt=<key>`: decrypts post with given shared or private key
+- `--decrypt=<pvt>`: `[optional]` decrypts post in public identity chain with the owner's private key
+
+Posts in private chains are always decrypted regardless of the `--decrypt`
+option.
 
 - Examples:
 
 ```
 freechains chain "#" get block 1_CAC69BBC21388FA75F808B9AF0D652D059DEFF49FEE6B2E7E432C3F6DFD72C7A
-freechains chain "$trusted-friends" get payload 2_CBBBE2CB4... --crypt=<shared-key>
+freechains chain "@B2853F..." get payload 2_CBBBE2CB4... --decrypt=8889BB68FB44...
 ```
 
 ### `chain post`
@@ -248,7 +254,7 @@ freechains chain <name> post (file | inline | -) [<path_or_text>]
 ```
 
 Freechains only accepts posts in `UTF-8`.
-Binary files must be encoded as text with `uuencode` or `base64`, for example.
+Binary files must be encoded as text, for example, with `uuencode` or `base64`.
 
 - `<name>`: name of the chain
 - (file | inline | -)
@@ -257,15 +263,18 @@ Binary files must be encoded as text with `uuencode` or `base64`, for example.
     - `-`:      post contents from standard input
 - `<path_or_text>`:  `[file | inline]` file name or text to post
 - `--sign=<pvtkey>`: `[optional]`      signs post with given private key
-- `--crypt=<key>`:   `[optional]`      encrypts post with given shared or private key
+- `--encrypt`: `[optional]` encrypts post in public identity chain with the owner's public key
+
+Posts in private chains are always encrypted regardless of the `--encrypt`
+option.
 
 - Examples:
 
 ```
 freechains chain "#" post inline "Hello World!"
 freechains chain "#chat" post inline "Message from myself!" --sign=<my-pvtkey>
-freechains chain "@<some-person-pubkey>" post inline "Crypted message from myself!" --crypt=<some-person-pubkey> --sign=<my-pvtkey>
-freechains chain "$trusted-friends" post inline "Crypted message to my friends" --crypt=<shared-key>
+freechains chain "@<some-person-pubkey>" post inline "Crypted message from myself!" --encrypt --sign=<my-pvtkey>
+freechains chain "$trusted-friends" post inline "Crypted message to my friends"
 echo "Hello World!" | freechains chain post "#" -
 
 uuencode mypic.jpg mypic.jpg > mypic.uu

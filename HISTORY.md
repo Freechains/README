@@ -2,11 +2,14 @@ v0.6 (jun/20)
 -------------
 
 - Added prefixes in chain names (`#` for public forums, `@` for public identities, and `$` for private groups).
+    - `@!` if only owner can write
+    - `$` requires a shared key on `join`
 - Removed `host` file (not needed anymore).
 - Commands:
   - Removed `create` in favor of `start` passing directory and port.
-  - Changed `chains join` to use the name prefixes.
+  - Changed `chains join` to use the name prefixes and accept shared key.
   - Changed order of arguments in `chain` and `peer` (`chain <name> ...` and `peer <host> ...`).
+  - Changed `--crypt` to `--encrypt`/`--decrypt` and only for `@` chains (`$` chains always encrypt).
 - Internal changes in the protocol: single lines commands and arguments order.
 - Improved many error messages.
 
