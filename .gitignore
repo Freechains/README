@@ -1,2 +1,4 @@
 *.swp
 freechains*.zip
+install-v*.sh
+build/

@@ -7,7 +7,7 @@
 # - install.sh
 #   - VER=...
 # - README.md
-#   - wget ...
+#   - wget/sh/sudo ...
 #
 # BUILD:
 # $ ./build.sh
@@ -19,7 +19,7 @@
 # - title  = <version>
 # - Attach = { .zip, install.sh }
 
-VER=v0.6.0
+VER=v0.6.1
 DIR=/tmp/freechains-build/
 
 rm -Rf $DIR
