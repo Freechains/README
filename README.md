@@ -60,13 +60,13 @@ $ sudo sh install-v0.7.2.sh /usr/local/bin  # or     unzip to system  directory
 
 The basic API of Freechains is very straightforward:
 
-- `freechains-host start`:     starts the local peer to serve requests (execute on every restart)
-- `freechains crypto`:         creates a cryptographic identity
-- `freechains chains join`:    joins a chain locally to post and read content
-- `freechains chain post`:     posts to a chain locally
-- `freechains chain get`:      reads a post locally
-- `freechains chain traverse`: iterates over (discovers) local posts
-- `freechains peer send/recv`: synchronizes a local chain with a remote peer
+- `freechains-host start ...`:     starts the local peer to serve requests (execute on every restart)
+- `freechains crypto ...`:         creates a cryptographic identity
+- `freechains chains join ...`:    joins a chain locally to post and read content
+- `freechains chain post ...`:     posts to a chain locally
+- `freechains chain get ...`:      reads a post locally
+- `freechains chain traverse ...`: iterates over (discovers) local posts
+- `freechains peer send/recv ...`: synchronizes a local chain with a remote peer
 
 Follows a step-by-step execution:
 
