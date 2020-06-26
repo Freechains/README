@@ -15,7 +15,7 @@ Send a message to us!
 
 - Public Identities:
     - Francisco Sant'Anna
-        - `@A2885F4570903EF5EBA941F3497B08EB9FA9A03B4284D9B27FF3E332BA7B6431`
+        - `@7EA6E8E2DD5035AAD58AE761899D2150B9FB06F0C8ADC1B5FE817C4952AC06E6`
 
 - Hosts:
     - `francisco-santanna.duckdns.org`

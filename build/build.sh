@@ -19,14 +19,14 @@
 # - title  = <version>
 # - Attach = { .zip, install.sh }
 
-VER=v0.6.2
+VER=v0.7.2
 DIR=/tmp/freechains-build/
 
 rm -Rf $DIR
 rm -f  /tmp/freechains-$VER.zip
 mkdir -p $DIR
 
-cp /usr/local/bin/Freechains.jar /usr/local/bin/freechains $DIR
+cp /usr/local/bin/Freechains.jar /usr/local/bin/freechains* /usr/local/bin/slf4j*.jar $DIR
 
 cd /tmp/
 zip freechains-$VER.zip -r freechains-build/

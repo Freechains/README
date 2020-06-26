@@ -49,19 +49,19 @@ $ sudo apt install default-jre libsodium23
 Then, you are ready to install `freechains`:
 
 ```
-$ wget https://github.com/Freechains/README/releases/download/v0.6.2/install-v0.6.2.sh
+$ wget https://github.com/Freechains/README/releases/download/v0.7.2/install-v0.7.2.sh
 
 # choose one:
-$ sh install-v0.6.2.sh .                    # either unzip to current directory (must be in the PATH)
-$ sudo sh install-v0.6.2.sh /usr/local/bin  # or     unzip to system  directory
+$ sh install-v0.7.2.sh .                    # either unzip to current directory (must be in the PATH)
+$ sudo sh install-v0.7.2.sh /usr/local/bin  # or     unzip to system  directory
 ```
 
 ## Basics
 
 The basic API of Freechains is very straightforward:
 
-- `host start`:      starts the local peer to serve requests (executed on every restart)
-- `crypto create`:   creates an identity
+- `-host start`:     starts the local peer to serve requests (execute on every restart)
+- `crypto`:          creates a cryptographic identity
 - `chains join`:     joins a chain locally to post and read content
 - `chain post`:      posts to a chain locally
 - `chain get`:       reads a post locally
@@ -73,7 +73,7 @@ Follows a step-by-step execution:
 - Start host:
 
 ```
-$ freechains host start /tmp/myhost
+$ freechains-host start /tmp/myhost
 ```
 
 - Switch to another terminal.
@@ -81,22 +81,21 @@ $ freechains host start /tmp/myhost
 - Join the `#chat` chain:
 
 ```
-$ freechains chains "#chat" join
+$ freechains chains join "#chat"
 ```
 
 - Create an identity:
 
 ```
-$ freechains crypto create pubpvt "My very strong passphrase"
+$ freechains crypto pubpvt "My very strong passphrase"  # returns public private keys
 EB172ED6C782145B8D4FD043252206192C302E164C0BD16D49EB9D36D5188070 96700ACD1128035FFEF5DC264DF87D5FEE45FF15E2A880708AE40675C9AD039EEB172ED6C782145B8D4FD043252206192C302E164C0BD16D49EB9D36D5188070
-$ PVT=96700ACD1128035FFEF5DC264DF87D5FEE45FF15E2A880708AE40675C9AD039EEB172ED6C782145B8D4FD043252206192C302E164C0BD16D49EB9D36D5188070
 ```
 
 - Post some content:
 
 ```
-$ freechains chain "#chat" post inline "Hello World!" --sign=$PVT
-$ freechains chain "#chat" post inline "I am here!"   --sign=$PVT
+$ freechains chain "#chat" post inline "Hello World!" --sign=96700A... # key above
+$ freechains chain "#chat" post inline "I am here!"   --sign=96700A... # key above
 ```
 
 - Communicate with other peers:
@@ -105,7 +104,7 @@ $ freechains chain "#chat" post inline "I am here!"   --sign=$PVT
    - Synchronize with the first host.
 
 ```
-$ freechains host start /tmp/othost 8331
+$ freechains-host start /tmp/othost 8331
 # switch to another terminal
 $ freechains --host=localhost:8331 chains join "#chat"
 $ freechains --host=localhost:8330 peer localhost:8331 send "#chat"
