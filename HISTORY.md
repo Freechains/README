@@ -1,11 +1,11 @@
-v0.7 (jun/20)
+v0.7 (jul/20)
 -------------
 
 - Split command-line interface in two commands: `freechains-host` to
   start/stop the host and `freechains` for all other commands.
-- Added `freechains-bootstrap` tool to manage peers/chains automatically in
-  multiple hosts.
-- Split github project: `android`, `bootstrap`, `cli`, `common`, `host`, `tests`.
+- Added `freechains-sync` tool to manage peers/chains automatically in multiple
+  hosts.
+- Split github project: `android`, `cli`, `common`, `host`, `store`, `sync`, `tests`.
 
 v0.6 (jun/20)
 -------------
