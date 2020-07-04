@@ -19,7 +19,7 @@
 # - title  = <version>
 # - Attach = { .zip, install.sh }
 
-VER=v0.7.4
+VER=v0.7.5
 DIR=/tmp/freechains-build/
 
 rm -Rf $DIR
