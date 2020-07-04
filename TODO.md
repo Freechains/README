@@ -1,0 +1,67 @@
+```
+                              reps             28-02    29-02    17-03   19-03    25-04   28-04   04-05   08-06
+    736 ->   809 ->   930 ->  1180 ->  1131 ->  1365 ->  1434 ->  1598 -> 1681 -> 1500 -> 1513 -> 1555 -> 1787 LOC
+  10553 -> 10555 -> 10557 -> 10568 -> 10575 -> 10590 -> 10607 ->  5691 -> .... -> 5702 ->                 5808 KB
+```
+
+- cts/ids check each other
+- sort sync by ping timeout
+- ping: return version
+- peer chains return one by line with parameters
+- return codes from org.freechains.host.cli
+- permission for client
+- android app client para controlar host: registrar hosts, chains, users, etc, receber notificacoes
+- passar dir de instalacao p/ install
+- show IPs in connections
+- test 50 random very slow chains each host
+- two simulation at the same time
+- allow binary pay
+- site to track: last access, chains heads
+- liferea, /home, docs
+- PROTO:
+  - autor fork: merge largest instead of reject
+  - prunning (hash of bases, starts with genesis), if they don't match, permanent fork
+    - new idea 4-month window every org.freechains.host.host.day at 0:00
+- HOST: "create" receives pub/pvt args
+  - creates pvt chain oo (for logs, periodic bcast)
+  - save CFG in a chain
+  - join reputation system (evaluate continue@xxx)
+  - replicate command (all state)
+  - all conns start with pubs from both ends
+- TEST
+  - oonly, N16_blocked, S128_payload
+  - proof that pay="" is really hidden
+- REFACTOR
+  - join (stop/now), they use connection
+  - chain/.* move dir files
+- CMDS
+  - freechains now s/ time (retorna now)
+  - freechains host restart
+  - freechains crypto w/o passphrase (to self generate)
+- VERSIONS
+  - jvm,android,lua
+  - remove jar from repo, use github releases
+- LIFEREA
+  - likes in title // get rep in menu and each post owner
+  - autochain, first post introducing itself (ID/photo?)
+  - menu:
+    - dot
+    - like w/ ui for nick/pub
+- IMPL:
+  - fix org.freechains.host.host.getNow() per handle()
+  - org.freechains.host.host.blockAssert: verify symmetric auth
+  - sends in parallel
+  - blk/hash variations for all functions (avoid extra blockLoads)
+  - when too many blocks, no reader returns soon, so reader timeout
+- IDEAS:
+  - chain for restauration of state in other host holding all necessary commands
+- Aether client
+- commands with auth. ip port time to avoid reuse
+- RX Kotlin
+- pipes / filtros
+- Future:
+- Xfreechains
+  - chain xtraverse
+- Android WiFi Direct
+- crypto host-to-host
+- RPi: cable eth + wifi router + phones
