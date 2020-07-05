@@ -91,7 +91,7 @@ freechains-host start /var/freechains
 freechains-host start /tmp/freechains --port=8331
 ```
 
-### `host stop`
+### `stop`
 
 Stops a running deamon.
 
