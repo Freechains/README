@@ -22,17 +22,25 @@ Freechains is (intended to be) decentralized, fair, free (*as-in-speech*), free
 scalable.
 -->
 
-- Comparison with [other](docs/others.md) systems
-- Concepts:
-    - [Post / Message / Block](docs/blocks.md)
-    - [Chain / Topic / Feed](docs/chains.md)
-    - [Reputation System](docs/reps.md)
-- List of all [commands](docs/cmds.md)
-- Discussion [group](https://groups.google.com/forum/#!forum/freechains) about Freechains
-- List of [publicly available resources](docs/join.md)
-<!--
-- Using an [e-mail client](https://github.com/Freechains/mail/) to interface with Freechains (very hacky)
--->
+- [Other systems](docs/others.md): comparison with other systems
+- [Commands](docs/cmds.md): list of all protocol commands
+- Main concepts:
+    - [Block](docs/blocks.md): unit of information (aka post or message)
+    - [Chain](docs/chains.md): list of blocks (aka topic or feed]
+    - [Reps](docs/reps.md): reputation system of chains
+- [Google group](https://groups.google.com/forum/#!forum/freechains):
+    discussion group about Freechains
+- [Resources](docs/join.md):
+    publicly available chains, identities and peers
+- Tools:
+    - [Store](https://github.com/Freechains/store):
+        interprets a chain as a dataset
+    - [Sync](https://github.com/Freechains/sync):
+        persist and replicate peers and chains of interest
+    - [Android dashboard](https://github.com/Freechains/android-dashboard/):
+        manage/navigate your peers/chains
+    - [E-mail client](https://github.com/Freechains/mail/):
+        communicate through an e-mail client (very hacky, abandoned?)
 - Introductory videos:
     [1/3](https://www.youtube.com/watch?v=7_jM0lgWL2c) |
     [2/3](https://www.youtube.com/watch?v=bL0yyeVz_xk) |

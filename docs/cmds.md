@@ -1,15 +1,33 @@
 # Freechains: Command-Line Interface
 
+- `freechains-host`
+
 ```
-freechains v0.6
+freechains-host v0.7.6
 
 Usage:
-    freechains host start <dir> [<port>]
-    freechains host stop
-    freechains host now <time>
+    freechains-host start <dir>
+    freechains-host stop
 
-    freechains crypto create (shared | pubpvt) <passphrase>
+Options:
+    --help          displays this help
+    --version       displays software version
+    --port=<port>   sets port to connect [default: 8330]
 
+More Information:
+
+    http://www.freechains.org/
+
+    Please report bugs at <http://github.com/Freechains/README/>.
+
+```
+
+- `freechains`
+
+```
+freechains v0.7.6
+
+Usage:
     freechains chains join  <chain> [<shared>]
     freechains chains leave <chain>
     freechains chains list
@@ -25,48 +43,52 @@ Usage:
     freechains chain <chain> traverse (all | linked) <hashes>...
     freechains chain <chain> listen
 
-    freechains peer <host:port> ping
-    freechains peer <host:port> chains
-    freechains peer <host:port> (send | recv) <chain>
+    freechains peer <addr:port> ping
+    freechains peer <addr:port> chains
+    freechains peer <addr:port> (send | recv) <chain>
+
+    freechains crypto (shared | pubpvt) <passphrase>
 
 Options:
     --help              [none]            displays this help
-    --version           [none]            displays version information
-    --host=<addr:port>  [all]             sets address and port to connect [default: localhost:${PORT_8330}]
+    --version           [none]            displays software version
+    --host=<addr:port>  [all]             sets host address and port to connect [default: localhost:8330]
+    --port=port         [all]             sets host port to connect [default: 8330]
     --sign=<pvt>        [post|(dis)like]  signs post with given private key
     --encrypt           [post]            encrypts post with public key (only in public identity chains)
-    --decrypt=<pvt>]    [get]             decrypts post with private key (only in public identity chains)
+    --decrypt=<pvt>     [get]             decrypts post with private key (only in public identity chains)
     --why=<text>        [(dis)like]       explains reason for the like
 
 More Information:
 
     http://www.freechains.org/
 
-    Please report bugs at <http://github.com/Freechains/jvm>.
+    Please report bugs at <http://github.com/Freechains/README/>.
 ```
 
-Except for `host start`, all other commands accept an optional host to use:
+## `freechains-host`
 
-- `--host=<addr:port>`: `[optional]` use daemon running at given address and port  (default: `localhost:8330`)
-
-## Host
-
-### `host start`
-
-Starts a deamon to serve in the given directory and port.
+All commands accept an optional port to connect:
 
 ```
-freechains host start <dir> [<port>]
+    --port=<port>   sets port to connect [default: 8330]
+```
+
+### `start`
+
+Starts a deamon to serve in the given directory.
+
+```
+freechains-host start <dir>
 ```
 
 - `<dir>`: path to local directory to serve
-- `<port>`: `[optional]` alternative listening port (default: `8330`)
 
 - Examples:
 
 ```
-freechains host start /var/freechains
-freechains host start /tmp/freechains 8331
+freechains-host start /var/freechains
+freechains-host start /tmp/freechains --port=8331
 ```
 
 ### `host stop`
@@ -80,18 +102,27 @@ freechains host stop
 - Examples:
 
 ```
-freechains host stop
-freechains host stop --host=localhost:8331
+freechains-host stop
+freechains-host stop --host=localhost:8331
 ```
 
-## Crypto
+## `freechains`
 
-### `crypto create`
+All commands accept an optional host or port to connect:
+
+```
+    --host=<addr:port>  sets host address and port to connect [default: localhost:8330]
+    --port=<port>       sets port to connect [default: 8330]
+```
+
+### Crypto
+
+#### `crypto`
 
 Creates symmetric and asymmetric cryptographic keys.
 
 ```
-freechains crypto create (shared | pubpvt) <passphrase>
+freechains crypto (shared | pubpvt) <passphrase>
 ```
 
 - `(shared | pubpvt)`
@@ -102,13 +133,13 @@ freechains crypto create (shared | pubpvt) <passphrase>
 - Examples:
 
 ```
-freechains crypto create shared "My very strong password"
-freechains crypto create pubpvt "My very strong password"
+freechains crypto shared "My very strong password"
+freechains crypto pubpvt "My very strong password"
 ```
 
-## Chains
+### Chains
 
-### `chains join`
+#### `chains join`
 
 Prepares host to serve a chain.
 
@@ -134,7 +165,7 @@ freechains chains join "\$friends" 8889BB68FB44065BBEC8D7441C53D50362737782445AD
 freechains chains join "@!C1733F457A90DEF3ECC941F349DCA8EC9FB9CA3C41D4D9B27FF3EDD1CC3B6431"
 ```
 
-### `chains leave`
+#### `chains leave`
 
 Leaves a chain removing all of its data.
 
@@ -151,7 +182,7 @@ freechains chains leave "#"
 freechains chains leave "@B2853F4570903EF3ECC941F3497C08EC9FB9B03C4154D9B27FF3E331BC7B6431"
 ```
 
-### `chains list`
+#### `chains list`
 
 Lists all local chains.
 
@@ -165,7 +196,7 @@ freechains chains list
 freechains chains list
 ```
 
-### `chains listen`
+#### `chains listen`
 
 Listens for incoming blocks from all chains.
 
@@ -182,9 +213,9 @@ they arrive.
 freechains listen
 ```
 
-## Chain
+### Chain
 
-### `chain genesis`
+#### `chain genesis`
 
 Gets the genesis block for the chain.
 
@@ -200,7 +231,7 @@ freechains chain <name> genesis
 freechains chain "#" genesis
 ```
 
-### `chain heads`
+#### `chain heads`
 
 Gets the hash of the heads in the chains.
 
@@ -220,7 +251,7 @@ freechains chain "#mail" heads blocked
 freechains chain "#sports" heads linked
 ```
 
-### `chain get`
+#### `chain get`
 
 Gets the block with the given hash.
 
@@ -245,7 +276,7 @@ freechains chain "#" get block 1_CAC69BBC21388FA75F808B9AF0D652D059DEFF49FEE6B2E
 freechains chain "@B2853F..." get payload 2_CBBBE2CB4... --decrypt=8889BB68FB44...
 ```
 
-### `chain post`
+#### `chain post`
 
 Posts a new block in the chain.
 
@@ -281,7 +312,7 @@ uuencode mypic.jpg mypic.jpg > mypic.uu
 freechains chain "@<my-pubkey>" post file mypic.uu --sign=<my-pvtkey>
 ```
 
-### `chain (like | dislike)`
+#### `chain (like | dislike)`
 
 Likes or dislikes block in the chain.
 
@@ -304,7 +335,7 @@ freechains chain "#jokes" like 3_51C7BD... --sign=<my-pvtkey> --why="Very funny"
 freechains chain "#" dislike 4_29A673... --sign=<my-pvtkey>
 ```
 
-### `chain reps`
+#### `chain reps`
 
 Gets the reputation of post (block hash) or author (public key).
 
@@ -324,7 +355,7 @@ freechains chain "#" reps 4_29A673...
 freechains chain "#" reps B2853F45...
 ```
 
-### `chain remove`
+#### `chain remove`
 
 Removes blocked block laying in the host.
 
@@ -344,7 +375,7 @@ Blocks that are not accepted should be removed by hand after some period.
 freechains chain "#" remove 6_A56F33...
 ```
 
-### `chain traverse`
+#### `chain traverse`
 
 Traverses and gets the hashes of a sub-tree of blocks in the chain.
 Starts from the heads and traverses down to the given block hashes (excluded).
@@ -371,7 +402,7 @@ freechains chain "#" traverse all /1_CAC69B...
 freechains chain "#" traverse linked /2_CBBBE2... /3_D3DB32...
 ```
 
-### `chain listen`
+#### `chain listen`
 
 Listens for incoming blocks in the given chain.
 
@@ -389,9 +420,9 @@ The command never terminates and outputs the number of new blocks as they arrive
 freechains chain "#" listen
 ```
 
-## Peer
+### Peer
 
-### `peer ping`
+#### `peer ping`
 
 Counts the round-trip time to a given peer.
 
@@ -407,7 +438,7 @@ freechains peer <host:port> ping
 freechains peer 10.1.1.2 ping
 ```
 
-### `peer chains`
+#### `peer chains`
 
 Gets the available chains from a given peer.
 
@@ -423,7 +454,7 @@ freechains peer <host:port> chains
 freechains peer 10.1.1.2 chains
 ```
 
-### `peer (send | recv)`
+#### `peer (send | recv)`
 
 Synchronizes a chain with a given peer.
 
