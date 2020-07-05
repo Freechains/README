@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# TEST:
+# - tests/
+#   - Tests
+#   - Tests_Sync
+#   - ./tests.sh
 # EDIT:
 # - Util.kt
 # - build.sh
@@ -19,7 +24,7 @@
 # - title  = <version>
 # - Attach = { .zip, install.sh }
 
-VER=v0.7.5
+VER=v0.7.6
 DIR=/tmp/freechains-build/
 
 rm -Rf $DIR
