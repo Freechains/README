@@ -57,11 +57,11 @@ $ sudo apt install default-jre libsodium23
 Then, you are ready to install `freechains`:
 
 ```
-$ wget https://github.com/Freechains/README/releases/download/v0.7.6/install-v0.7.6.sh
+$ wget https://github.com/Freechains/README/releases/download/v0.7.7/install-v0.7.7.sh
 
 # choose one:
-$ sh install-v0.7.6.sh .                    # either unzip to current directory (must be in the PATH)
-$ sudo sh install-v0.7.6.sh /usr/local/bin  # or     unzip to system  directory
+$ sh install-v0.7.7.sh .                    # either unzip to current directory (must be in the PATH)
+$ sudo sh install-v0.7.7.sh /usr/local/bin  # or     unzip to system  directory
 ```
 
 ## Basics
