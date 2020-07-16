@@ -62,11 +62,11 @@ $ sudo apt install default-jre libsodium23
 Then, you are ready to install `freechains`:
 
 ```
-$ wget https://github.com/Freechains/README/releases/download/v0.7.8/install-v0.7.8.sh
+$ wget https://github.com/Freechains/README/releases/download/v0.7.9/install-v0.7.9.sh
 
 # choose one:
-$ sh install-v0.7.8.sh .                    # either unzip to current directory (must be in the PATH)
-$ sudo sh install-v0.7.8.sh /usr/local/bin  # or     unzip to system  directory
+$ sh install-v0.7.9.sh .                    # either unzip to current directory (must be in the PATH)
+$ sudo sh install-v0.7.9.sh /usr/local/bin  # or     unzip to system  directory
 ```
 
 ## Basics
@@ -125,9 +125,10 @@ $ freechains --host=localhost:8330 peer localhost:8331 send "#chat"
 
 The last command sends all new posts from `8330` to `8331`, which can
 then be traversed as follows:
-    - Identify the predefined "genesis" post of `"#chat"`.
-    - Acquire it to see what comes next.
-    - Iterate over its `fronts` posts recursively.
+
+- Identify the predefined "genesis" post of `"#chat"`.
+- Acquire it to see what comes next.
+- Iterate over its `fronts` posts recursively.
 
 ```
 $ freechains --host=localhost:8331 chain "#chat" genesis

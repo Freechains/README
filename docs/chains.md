@@ -71,7 +71,7 @@ The type of the chain is determined by the prefix in its name:
 In a public forum chain, messages circulate among untrusted possibly malicious
 users and peers (`N<->N` communication).
 For this reason, chains of this type must rely on the
-[reputation system](docs/reps.md) of Freechains to be viable in a completely
+[reputation system](reps.md) of Freechains to be viable in a completely
 decentralized setting.
 Without any control, the contents of a public forum chain are at mercy of
 excess, SPAM, fake news, illegal content, and abusive behavior.
