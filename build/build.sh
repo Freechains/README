@@ -10,11 +10,8 @@
 #   - ./tests.sh
 # EDIT:
 # - build.sh
-#   - VER=...
 # - install.sh
-#   - VER=...
 # - README.md
-#   - wget/sh/sudo ...
 #
 # BUILD:
 # $ ./build.sh
@@ -25,6 +22,13 @@
 # - tag    = <version>
 # - title  = <version>
 # - Attach = { .zip, install.sh }
+#
+# TEST
+# $ cd /data/freechains/bin/
+# $ wget https://github.com/Freechains/README/releases/download/v0.7.9/install-v0.7.9.sh
+# $ sudo sh install-v0.7.9.sh /usr/local/bin
+# $ ./setup.sh
+# $ ./start.sh
 
 VER=v0.7.9
 DIR=/tmp/freechains-build/

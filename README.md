@@ -33,10 +33,12 @@ scalable.
 - [Resources](docs/join.md):
     publicly available chains, identities and peers
 - Source code:
-    - [Common](https://github.com/Freechains/common/): common files
-    - [Host](https://github.com/Freechains/host/): host daemon
-    - [CLI](https://github.com/Freechains/cli/): command-line interface
-    - [Tests](https://github.com/Freechains/tests/): self tests
+    - [Compile](docs/compile.md)
+    - Subprojects:
+        - [Common](https://github.com/Freechains/common/): common files
+        - [Host](https://github.com/Freechains/host/): host daemon
+        - [CLI](https://github.com/Freechains/cli/): command-line interface
+        - [Tests](https://github.com/Freechains/tests/): self tests
 - Tools:
     - [Store](https://github.com/Freechains/store):
         interprets a chain as a dataset

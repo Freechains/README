@@ -36,8 +36,8 @@ The block data structure is composed of four parts:
 2. An optional signature including the public key of the signer (`pub`) and the
    actual signature (`sig`).
 1. The core of the block with all sensitive information about the message
-   (its creation time, if it's encrypted, its hash, if it's a like or
-   dislike), and links to previous blocks.
+   (its creation time, if it's encrypted, if it's a like or dislike), and links
+   to previous blocks.
 4. The digest (`hash`) of the core which univocally identifies the block.
    The digest is prefixed with the height of the block in the chain, e.g.,
    `5_F700CC98A6BA6A562CF6272AFC1044CB0F049E2E71D1076DA3391E85EE2CE2B8`
