@@ -105,7 +105,7 @@ The shared key can be [generated](cmds.md#crypto-create) from a secret
 passphrase:
 
 ```
-$ freechains crypto create shared <my-very-strong-passphrase>
+$ freechains crypto shared <my-very-strong-passphrase>
 8889BB68FB44065BBEC8D7441C53D50362737782445ADF0EB167A5DEF354D638
 ```
 
@@ -139,7 +139,7 @@ A public identity can be [generated](cmds.md#crypto-create) from a secret
 passphrase to yield a public-private key pair:
 
 ```
-$ freechains crypto create pubpvt <my-very-strong-passphrase>
+$ freechains crypto pubpvt <my-very-strong-passphrase>
 59BD9E... 8889BB68FB44...  # output from the command: public-key private-key
 ```
 
