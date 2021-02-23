@@ -22,7 +22,7 @@ $ git clone https://github.com/Freechains/tests/
     - Run self tests:
         - On the left pane:
             - Double click file `tests -> src -> test -> kotlin -> Test.kt`
-            - `TMP`: remove files `Sumul.kt` and `Sync.kt`
+            - `TMP`: remove files `Simul.kt` and `Sync.kt`
         - Press `CTRL-SHIFT-F10` to run all tests (takes long...)
     - Generate artifacts:
         - Click `File -> Project Structure -> Artifacts -> + -> JAR -> From modules with dependencies`
