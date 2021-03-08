@@ -93,7 +93,7 @@ in `1<-` "self communication" such as a personal to-do list and backups.
 A private chain uses the prefix `$` in its name:
 
 ```
-freechains chains join "$friends" 8889BB68FB44065BBEC8D7441C53D50362737782445ADF0EB167A5DEF354D638
+freechains chains join "\$friends" 8889BB68FB44065BBEC8D7441C53D50362737782445ADF0EB167A5DEF354D638
 ```
 
 In a private group chain, all users have infinite reputation and they are not
