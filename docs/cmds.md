@@ -33,6 +33,7 @@ Usage:
     freechains chains list
     freechains chains listen
 
+    freechains chain <name> genesis
     freechains chain <name> heads [blocked]
     freechains chain <name> get (block | payload) <hash> [file <path>]
     freechains chain <name> post (file | inline | -) [<path_or_text>]

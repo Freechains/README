@@ -2,11 +2,14 @@
 
 # EDIT:
 # - Util.kt
+# - run Tests.kt
+# MAKE:
 # - Rebuild / Artifacts
+# - cd src/test/shell/
+#   - sudo make install
+#   - freechains --version
 # TEST:
-# - tests/
-#   - Tests
-#   - Tests_Sync
+# - cd src/tests/shell/test/
 #   - ./tests.sh
 # EDIT:
 # - build.sh
@@ -25,12 +28,12 @@
 #
 # TEST
 # $ cd /data/freechains/bin/
-# $ wget https://github.com/Freechains/README/releases/download/v0.8.0/install-v0.8.0.sh
-# $ sudo sh install-v0.8.0.sh /usr/local/bin
+# $ wget https://github.com/Freechains/README/releases/download/v0.8.1/install-v0.8.1.sh
+# $ sudo sh install-v0.8.1.sh /usr/local/bin
 # $ ./setup.sh
 # $ ./start.sh
 
-VER=v0.8.0
+VER=v0.8.1
 DIR=/tmp/freechains-build/
 
 rm -Rf $DIR

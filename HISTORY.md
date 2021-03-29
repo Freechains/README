@@ -1,3 +1,14 @@
+v0.8 (mar/21)
+-------------
+
+- Reputation system redesigned: consensus based on reputation.
+- Support for binary files.
+- Support for big files, except in public chains.
+- Public chains have a *pioneer* public key on join (substitutes first block).
+- Small changes in the command-line interface (`join`,`heads`,`get`,`traverse`).
+- Single source repository `freechains.kt` (substitutes multiple repos).
+- Changes in the internal structure of blocks (`local`,`prev`).
+
 v0.7 (jul/20)
 -------------
 

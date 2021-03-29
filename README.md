@@ -32,14 +32,9 @@ scalable.
     discussion group about Freechains
 - [Resources](docs/join.md):
     publicly available chains, identities and peers
-- Source code:
-    - [Compile](docs/compile.md)
-    - Subprojects:
-        - [Common](https://github.com/Freechains/common/): common files
-        - [Host](https://github.com/Freechains/host/): host daemon
-        - [CLI](https://github.com/Freechains/cli/): command-line interface
-        - [Tests](https://github.com/Freechains/tests/): self tests
-- Tools:
+- [Source code](https://github.com/Freechains/freechains.kt/):
+    - [Compile instructions](docs/compile.md)
+- Tools (`outdated`):
     - [Store](https://github.com/Freechains/store):
         interprets a chain as a dataset
     - [Sync](https://github.com/Freechains/sync):
@@ -64,11 +59,11 @@ $ sudo apt install default-jre libsodium23
 Then, you are ready to install `freechains`:
 
 ```
-$ wget https://github.com/Freechains/README/releases/download/v0.8.0/install-v0.8.0.sh
+$ wget https://github.com/Freechains/README/releases/download/v0.8.1/install-v0.8.1.sh
 
 # choose one:
-$ sh install-v0.8.0.sh .                    # either unzip to current directory (must be in the PATH)
-$ sudo sh install-v0.8.0.sh /usr/local/bin  # or     unzip to system  directory
+$ sh install-v0.8.1.sh .                    # either unzip to current directory (must be in the PATH)
+$ sudo sh install-v0.8.1.sh /usr/local/bin  # or     unzip to system  directory
 ```
 
 ## Basics
