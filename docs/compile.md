@@ -16,9 +16,10 @@ $ git clone https://github.com/Freechains/freechains.kt/
         - Press `CTRL-SHIFT-F10` to run all tests (takes long...)
     - Generate artifacts:
         - Click `File -> Project Structure -> Artifacts -> + -> JAR -> From modules with dependencies`
-        - Click `Module -> tests.main`
+        - Click `Module -> freechains.kt.main`
         - Click `OK`
-        - Verify that `tests.main:jar` appears
+        - Verify that `freechains.kt.main:jar` appears at the top
+        - Click `OK`
     - Rebuild artifacts:
         - Click `Build -> Build artifacts -> Rebuild`
 
