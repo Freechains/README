@@ -9,37 +9,31 @@ The unit of reputation is known as *rep* and can be created, spent, and
 transferred in many ways:
 
 - Create:
-    - The first post in the chain accounts *+30 reps* to its author.
+    - The chain join accounts *+30 reps* to its pioneer.
     - A post older than 24h, aka *consolidated post*, accounts *+1 rep* to its
       author.
 - Spend:
-    - A post younger than 24h, aka *new post*, accounts *-1 rep* to its author.
+    - A post younger than at most 12h, aka *new post*, accounts *-1 rep* to its
+      author.
 - Transfer:
-    - A like    from author `A` to post `P` with author `B` accounts *-1 rep*
+    - A like    from author `A` to post `P` by author `B` accounts *-1 rep*
       to `A` and *+1 rep* to `B`.
-    - A dislike from author `A` to post `P` with author `B` accounts *-1 rep*
-      to `A` and *-1 rep* to `B`. If a post reaches *5 dislikes* and twice as
-      many dislikes as likes, its contents become hidden in the network.
+    - A dislike from author `A` to post `P` by author `B` accounts *-1 rep*
+      to `A` and *-1 rep* to `B`.
 
 - Additional rules:
-    - Peers trying to synchronize a chain with different first authors never
-      succeed.
-    - A new post requires previous reputation from the author or at least one
-      like from other authors.
-      Therefore, posts from new users are initially rejected, until they get a
-      like from an author with reputation.
-    - A like or dislike also requires previous reputation from the author.
-    - An author is limited to *+30 reps*.
-    - At most one consolidated post accounts per day: if an author has 10
-      consolidated posts in the past 7 days, s/he gets *+7 reps*.
-    - For any of the rules, only posts younger than 90 days are considered.
-
+    - New posts require previous reputation from authors or a like from other
+      authors.
+    - Authors are limited to at most *+30 reps*.
+    - Authors can benefit from at most one consolidated post accounts per day.
+    - The contents of posts are hidden if they reach at least 3 dislikes and
+      more dislikes than likes.
 - Special cases:
-    - In a [private group chain](chains.md#public-identity-chain), all users have infinite
-      reputation.
-    - In a [public identity chain](chains.md#private-group-chain), its owner has infinite
-      reputation. Other users might be allowed to post or not. If allowed, they
-      follow the general rules above.
+    - In a [private group chain](chains.md#public-identity-chain), all users
+      have infinite reputation.
+    - In a [public identity chain](chains.md#private-group-chain), its owner
+      has infinite reputation. Other users might be allowed to post or not. If
+      allowed, they follow the general rules above.
 
 See also the command-line interface for
     [likes and dislikes](cmds.md#chain-like--dislike) to posts
@@ -56,10 +50,10 @@ A user can dislike a post for a number of reasons, such as for considering it
 offensive, SPAM, fake, illegal, or even for disagreement.
 On the one hand, since likes and dislikes are finite, users have to ponder
 before spending them.
-On the other hand, reputation also expires after a few months, so users have
-incentives to cooperate with the quality of the chain.
-The contents of a post can be hidden if the number of dislikes is much higher
-than the number of likes.
+On the other hand, since reputation is limited to at most *30 reps*, users also
+have incentives to cooperate with the quality of the chain.
+The contents of a post can be hidden if the number of dislikes is higher than
+the number of likes.
 This rule is not intended to eliminate disagreements of opinion, but only to
 ban malicious users (e.g. a *troll*, *spammer*, or *abuser*).
 The excess of dislikes not only hides a post, but also consumes the reputation
@@ -68,7 +62,7 @@ of its author to the point that s/he cannot post again.
 We consider that in a fair chain, users have equal opportunities to speak, or
 at least that the amount of noise is limited.
 Freechains restricts the number of posts in two ways: first, new posts penalize
-authors in the first 24 hours; second, at most one post per day can generate
+authors in the first 12 hours; second, at most one post per day can generate
 reputation for an author.
 The first rule prevents that an author posts too many messages in sequence at
 the cost of decreasing its reputation very fast.
@@ -82,22 +76,22 @@ Similarly, a dislike means that other users are conceding their own voices to
 mute the author.
 
 The bootstrap of chains is also a situation that deserves clarification.
-At the beginning, only the author of the first post has reputation.
-Since new posts require previous reputation, no other author can post in the
-chain unless the first author approves it.
+At the beginning, only the chain pioneer has reputation.
+Since new posts require previous reputation, no other authors can post in the
+chain unless the pioneer approves it.
 After some time, other authors can self-approve their own posts and build up
 reputation.
-However, the first author can still interfere early in the process with enough
+However, the pioneer can still interfere early in the process with enough
 dislikes to clear someone else's reputation at the point of banishment.
 The early dynamics of a chain determines how the community evolves, since new
-users can inspect the actions of the first author and authors that emerge with
+users can inspect the actions of the pioneer and other authors that emerge with
 reputation.
 Ultimately, users can always recreate or join chains that better adhere to
 their principles.
 
 The size of the "economy" of each chain is its amount of consolidated posts.
 Likes and dislikes only transfer reputation between authors, and the initial
-reputation for the first author becomes negligible as time goes.
+reputation for the pioneer becomes negligible as time goes.
 The number of accountable consolidated posts is also limited to at most one per
 day per author.
 Hence, the size of the economy highly depends on the number of active authors
@@ -110,7 +104,7 @@ On the one hand, we believe that this fact contributes to sustain healthy
 discussions with a reasonable degree of disagreement, otherwise the economy of
 chains would collapse with an outbreak of dislikes.
 On the other hand, obvious undesired content like SPAM is rapidly banned (along
-with its author) with a few dislikes that does not affect the chain economy.
+with its author) with a few dislikes that do not affect the chain economy.
 
 ## Scenarios
 

@@ -3,7 +3,7 @@
 - `freechains-host`
 
 ```
-freechains-host v0.8.0
+freechains-host v0.7.6
 
 Usage:
     freechains-host start <dir>
@@ -25,22 +25,23 @@ More Information:
 - `freechains`
 
 ```
-freechains v0.8.0
+freechains v0.7.6
 
 Usage:
-    freechains chains join  <chain> [<key>]
+    freechains chains join  <chain> [<shared>]
     freechains chains leave <chain>
     freechains chains list
     freechains chains listen
 
-    freechains chain <name> heads [blocked]
-    freechains chain <name> get (block | payload) <hash> [file <path>]
-    freechains chain <name> post (file | inline | -) [<path_or_text>]
-    freechains chain <name> (like | dislike) <hash>
-    freechains chain <name> reps <hash_or_pub>
-    freechains chain <name> remove <hash>
-    freechains chain <name> traverse <hashes>...
-    freechains chain <name> listen
+    freechains chain <chain> genesis
+    freechains chain <chain> heads (all | linked | blocked)
+    freechains chain <chain> get (block | payload) <hash>
+    freechains chain <chain> post (file | inline | -) [<path_or_text>]
+    freechains chain <chain> (like | dislike) <hash>
+    freechains chain <chain> reps <hash_or_pub>
+    freechains chain <chain> remove <hash>
+    freechains chain <chain> traverse (all | linked) <hashes>...
+    freechains chain <chain> listen
 
     freechains peer <addr:port> ping
     freechains peer <addr:port> chains
@@ -102,7 +103,7 @@ freechains host stop
 
 ```
 freechains-host stop
-freechains-host stop --port=8331
+freechains-host stop --host=localhost:8331
 ```
 
 ## `freechains`
@@ -157,11 +158,11 @@ freechains chains join <chain> [<shared>]
 - Examples:
 
 ```
-freechains chains join '#'
-freechains chains join '#sports'
-freechains chains join '@B2853F4570903EF3ECC941F3497C08EC9FB9B03C4154D9B27FF3E331BC7B6431'
-freechains chains join '$friends' '8889BB68FB44065BBEC8D7441C53D50362737782445ADF0EB167A5DEF354D638'
-freechains chains join '@!C1733F457A90DEF3ECC941F349DCA8EC9FB9CA3C41D4D9B27FF3EDD1CC3B6431'
+freechains chains join "#"
+freechains chains join "#sports"
+freechains chains join "@B2853F4570903EF3ECC941F3497C08EC9FB9B03C4154D9B27FF3E331BC7B6431"
+freechains chains join "\$friends" 8889BB68FB44065BBEC8D7441C53D50362737782445ADF0EB167A5DEF354D638
+freechains chains join "@!C1733F457A90DEF3ECC941F349DCA8EC9FB9CA3C41D4D9B27FF3EDD1CC3B6431"
 ```
 
 #### `chains leave`
@@ -177,8 +178,8 @@ freechains chains leave <chain>
 - Examples:
 
 ```
-freechains chains leave '#'
-freechains chains leave '@B2853F4570903EF3ECC941F3497C08EC9FB9B03C4154D9B27FF3E331BC7B6431'
+freechains chains leave "#"
+freechains chains leave "@B2853F4570903EF3ECC941F3497C08EC9FB9B03C4154D9B27FF3E331BC7B6431"
 ```
 
 #### `chains list`
@@ -227,7 +228,7 @@ freechains chain <name> genesis
 - Examples:
 
 ```
-freechains chain '#' genesis
+freechains chain "#" genesis
 ```
 
 #### `chain heads`
@@ -235,15 +236,19 @@ freechains chain '#' genesis
 Gets the hash of the heads in the chains.
 
 ```
-freechains chain <name> heads [blocked]
+freechains chain <name> heads (all | linked | blocked)
 ```
 
 - `<name>`: name of the chain
-- `blocked`: gets only heads blocked in the chain
+- `(all | linked | blocked)`
+    - `all`:     gets all heads
+    - `linked`:  gets only heads linked (accepted or hidden) in the chain
+    - `blocked`: gets only heads blocked in the chain
 
 ```
-freechains chain '#' heads
-freechains chain '#mail' heads blocked
+freechains chain "#" heads all
+freechains chain "#mail" heads blocked
+freechains chain "#sports" heads linked
 ```
 
 #### `chain get`
@@ -251,7 +256,7 @@ freechains chain '#mail' heads blocked
 Gets the block with the given hash.
 
 ```
-freechains chain <name> get (block | payload) <hash> [file <path>]
+freechains chain <name> get (block | payload) <hash>
 ```
 
 - `<name>`: name of the chain
@@ -259,7 +264,6 @@ freechains chain <name> get (block | payload) <hash> [file <path>]
     - `block`:   gets information about the block
     - `payload`: gets the actual message in the block
 - `<hash>`:  hash of the block to get
-- `file <path>`: `[optional]` outputs contents to given file instead of standard output
 - `--decrypt=<pvt>`: `[optional]` decrypts post in public identity chain with the owner's private key
 
 Posts in private chains are always decrypted regardless of the `--decrypt`
@@ -268,8 +272,8 @@ option.
 - Examples:
 
 ```
-freechains chain '#' get block '1_CAC69BBC21388FA75F808B9AF0D652D059DEFF49FEE6B2E7E432C3F6DFD72C7A'
-freechains chain '@B2853F...' get payload '2_CBBBE2CB4'... --decrypt='8889BB68FB44...' file '/tmp/x.pay'
+freechains chain "#" get block 1_CAC69BBC21388FA75F808B9AF0D652D059DEFF49FEE6B2E7E432C3F6DFD72C7A
+freechains chain "@B2853F..." get payload 2_CBBBE2CB4... --decrypt=8889BB68FB44...
 ```
 
 #### `chain post`
@@ -280,8 +284,11 @@ Posts a new block in the chain.
 freechains chain <name> post (file | inline | -) [<path_or_text>]
 ```
 
+Freechains only accepts posts in `UTF-8`.
+Binary files must be encoded as text, for example, with `uuencode` or `base64`.
+
 - `<name>`: name of the chain
-- (inline | file | -)
+- (file | inline | -)
     - `file`:   post contents of given file
     - `inline`: post given text
     - `-`:      post contents from standard input
@@ -295,12 +302,14 @@ option.
 - Examples:
 
 ```
-freechains chain '#' post inline 'Hello World!'
-freechains chain '#chat' post inline 'Message from myself!' --sign='<my-pvtkey>'
-freechains chain '@<some-person-pubkey>' post inline 'Crypted message from myself!' --encrypt --sign='<my-pvtkey>'
-freechains chain '$trusted-friends' post inline 'Crypted message to my friends'
-echo 'Hello World!' | freechains chain post '#' -
-freechains chain '@<my-pubkey>' post file 'mypic.jpg' --sign='<my-pvtkey>'
+freechains chain "#" post inline "Hello World!"
+freechains chain "#chat" post inline "Message from myself!" --sign=<my-pvtkey>
+freechains chain "@<some-person-pubkey>" post inline "Crypted message from myself!" --encrypt --sign=<my-pvtkey>
+freechains chain "$trusted-friends" post inline "Crypted message to my friends"
+echo "Hello World!" | freechains chain post "#" -
+
+uuencode mypic.jpg mypic.jpg > mypic.uu
+freechains chain "@<my-pubkey>" post file mypic.uu --sign=<my-pvtkey>
 ```
 
 #### `chain (like | dislike)`
@@ -322,8 +331,8 @@ freechains chain <name> (like | dislike) <hash>
 - Examples
 
 ```
-freechains chain '#jokes' like '3_51C7BD...' --sign='<my-pvtkey>' --why='Very funny'
-freechains chain '#' dislike '4_29A673...' --sign='<my-pvtkey>'
+freechains chain "#jokes" like 3_51C7BD... --sign=<my-pvtkey> --why="Very funny"
+freechains chain "#" dislike 4_29A673... --sign=<my-pvtkey>
 ```
 
 #### `chain reps`
@@ -342,8 +351,8 @@ freechains chain <name> reps <hash_or_pub>
 - Examples:
 
 ```
-freechains chain '#' reps '4_29A673...'
-freechains chain '#' reps 'B2853F45...'
+freechains chain "#" reps 4_29A673...
+freechains chain "#" reps B2853F45...
 ```
 
 #### `chain remove`
@@ -363,7 +372,7 @@ Blocks that are not accepted should be removed by hand after some period.
 - Examples:
 
 ```
-freechains chain '#' remove '6_A56F33...'
+freechains chain "#" remove 6_A56F33...
 ```
 
 #### `chain traverse`
@@ -372,10 +381,13 @@ Traverses and gets the hashes of a sub-tree of blocks in the chain.
 Starts from the heads and traverses down to the given block hashes (excluded).
 
 ```
-freechains chain <name> traverse <hashes>...
+freechains chain <name> traverse (all | linked) <hashes>...
 ```
 
 - `<name>`: name of the chain
+- `(all | linked)`
+    - `all`:    traverses all blocks
+    - `linked`: traverses only linked blocks
 - `<hashes>...`: list of hashes to stop traversing
 
 The given hashes are typically the previous heads in the chain that were
@@ -386,7 +398,8 @@ traversal.
 - Examples:
 
 ```
-freechains chain '#' traverse '2_CBBBE2...' '3_D3DB32...'
+freechains chain "#" traverse all /1_CAC69B...
+freechains chain "#" traverse linked /2_CBBBE2... /3_D3DB32...
 ```
 
 #### `chain listen`
@@ -404,7 +417,7 @@ The command never terminates and outputs the number of new blocks as they arrive
 - Examples:
 
 ```
-freechains chain '#' listen
+freechains chain "#" listen
 ```
 
 ### Peer
@@ -422,7 +435,7 @@ freechains peer <host:port> ping
 - Examples:
 
 ```
-freechains peer '10.1.1.2' ping
+freechains peer 10.1.1.2 ping
 ```
 
 #### `peer chains`
@@ -438,7 +451,7 @@ freechains peer <host:port> chains
 - Examples:
 
 ```
-freechains peer '10.1.1.2' chains
+freechains peer 10.1.1.2 chains
 ```
 
 #### `peer (send | recv)`
@@ -461,6 +474,6 @@ A `send` started in host `A` passing host `B` is equivalent to a
 - Examples:
 
 ```
-freechains peer '10.1.1.2' send '#'
-freechains --host='10.1.1.2' peer '10.1.1.1' recv '#'
+freechains peer 10.1.1.2 send "#"
+freechains --host=10.1.1.2 peer 10.1.1.1 recv "#"
 ```

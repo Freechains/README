@@ -25,12 +25,12 @@
 #
 # TEST
 # $ cd /data/freechains/bin/
-# $ wget https://github.com/Freechains/README/releases/download/v0.7.9/install-v0.7.9.sh
-# $ sudo sh install-v0.7.9.sh /usr/local/bin
+# $ wget https://github.com/Freechains/README/releases/download/v0.8.0/install-v0.8.0.sh
+# $ sudo sh install-v0.8.0.sh /usr/local/bin
 # $ ./setup.sh
 # $ ./start.sh
 
-VER=v0.7.9
+VER=v0.8.0
 DIR=/tmp/freechains-build/
 
 rm -Rf $DIR

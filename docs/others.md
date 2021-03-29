@@ -36,7 +36,7 @@ For instance, subscribing to the same identity in different servers does not
 mean the same thing (i.e., they refer to different feeds).
 
 Overall, the missing piece here are rules to merge independent queues, which is
-required for example to express
+required, for example, to express
 public [`N<->N`](chains.md#public-forum-chain) content dissemination.
 Trying to synchronize servers in some way would lead to the exact same issues
 that we are trying to address in Freechains: how to order and relate messages
@@ -245,8 +245,8 @@ However, it is a system that has never being put into practice, so its
 effectiveness is yet to be proven.
 
 Freechains also has some inherent limitations.
-Posts are restricted in size (currently 128kb) and each peer holds up to 10
-posts from new users waiting for approval.
+Posts in public chains are restricted in size (currently 128kb) and each peer
+holds up to 10 posts from new users waiting for approval.
 This is to prevent denial of service by flooding peers with posts without
 reputation.
 For large blobs, users may break messages in parts or use links such as for

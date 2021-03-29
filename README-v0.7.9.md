@@ -64,11 +64,11 @@ $ sudo apt install default-jre libsodium23
 Then, you are ready to install `freechains`:
 
 ```
-$ wget https://github.com/Freechains/README/releases/download/v0.8.0/install-v0.8.0.sh
+$ wget https://github.com/Freechains/README/releases/download/v0.7.9/install-v0.7.9.sh
 
 # choose one:
-$ sh install-v0.8.0.sh .                    # either unzip to current directory (must be in the PATH)
-$ sudo sh install-v0.8.0.sh /usr/local/bin  # or     unzip to system  directory
+$ sh install-v0.7.9.sh .                    # either unzip to current directory (must be in the PATH)
+$ sudo sh install-v0.7.9.sh /usr/local/bin  # or     unzip to system  directory
 ```
 
 ## Basics
@@ -93,53 +93,71 @@ $ freechains-host start /tmp/myhost
 
 - Switch to another terminal.
 
+- Join the `#chat` chain:
+
+```
+$ freechains chains join "#chat"
+```
+
 - Create an identity:
 
 ```
-$ freechains crypto shared "My very strong passphrase"  # returns shared key
-96700ACD1128035FFEF5DC264DF87D5FEE45FF15E2A880708AE40675C9AD039E
-```
-
-- Join the private chain `$chat`:
-
-```
-$ freechains chains join '$chat' 96700A...  # type the full shared key above
-C40DBB...
+$ freechains crypto pubpvt "My very strong passphrase"  # returns public private keys
+EB172ED6C782145B8D4FD043252206192C302E164C0BD16D49EB9D36D5188070 96700ACD1128035FFEF5DC264DF87D5FEE45FF15E2A880708AE40675C9AD039EEB172ED6C782145B8D4FD043252206192C302E164C0BD16D49EB9D36D5188070
 ```
 
 - Post some content:
 
 ```
-$ freechains chain '$chat' post inline "Hello World!"
-1_DE2EF0...
-$ freechains chain '$chat' post inline "I am here!"
-2_317441...
+$ freechains chain "#chat" post inline "Hello World!" --sign=96700A... # key above
+$ freechains chain "#chat" post inline "I am here!"   --sign=96700A... # key above
 ```
 
 - Communicate with other peers:
    - Start another `freechains` host.
-   - Join the same private chain `$chat`.
+   - Join the `"#chat"` chain.
    - Synchronize with the first host.
 
 ```
 $ freechains-host start /tmp/othost 8331
 # switch to another terminal
-$ freechains --host=localhost:8331 chains join '$chat' 96700A... # type same key
-C40DBB...
-$ freechains --host=localhost:8330 peer localhost:8331 send '$chat'
-2 / 2
+$ freechains --host=localhost:8331 chains join "#chat"
+$ freechains --host=localhost:8330 peer localhost:8331 send "#chat"
 ```
 
 The last command sends all new posts from `8330` to `8331`, which can
 then be traversed as follows:
 
+- Identify the predefined "genesis" post of `"#chat"`.
+- Acquire it to see what comes next.
+- Iterate over its `fronts` posts recursively.
+
 ```
-$ freechains --host=localhost:8331 chain '$chat' traverse 0_C40DBB...
-1_DE2EF0... 2_317441...
-$ freechains --host=localhost:8331 chain '$chat' get payload 1_DE2EF0...
+$ freechains --host=localhost:8331 chain "#chat" genesis
+0_A80B5390F7CF66A8781F42AEB68912F2745FC026A71885D7A3CB70AB81764FB2
+$ freechains --host=localhost:8331 chain "#chat" get block 0_A80B5390F7CF66A8781F42AEB68912F2745FC026A71885D7A3CB70AB81764FB2
+{
+    ...
+    "fronts": [
+        "1_1D5D2B146B49AF22F7E738778F08E678D48C6DAAF84AF4128A17D058B6F0D852"
+    ],
+    ...
+}
+$ freechains --host=localhost:8331 chain "#chat" get block 1_1D5D2B146B49AF22F7E738778F08E678D48C6DAAF84AF4128A17D058B6F0D852
+{
+    "immut": {
+        ...
+        "backs": [
+            "0_A80B5390F7CF66A8781F42AEB68912F2745FC026A71885D7A3CB70AB81764FB2"
+        ]
+    },
+    "fronts": [
+        "2_DFDC784B4609F16F4487163CAC531A9FE6A0C588DA39D597769DA279AB53C862"
+    ],
+    ...
+}
+$ freechains --host=localhost:8331 chain "#chat" get payload 1_1D5D2B146B49AF22F7E738778F08E678D48C6DAAF84AF4128A17D058B6F0D852
 Hello World!
-$ freechains --host=localhost:8331 chain '$chat' get payload 1_DE2EF0...
-I am here!
 ```
 
 <!--
