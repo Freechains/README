@@ -26,7 +26,7 @@ $ git clone https://github.com/Freechains/freechains.kt/
 3. Install & Test binaries:
 
 ```
-$ cd freechains.kt/tests/src/main/shell/
+$ cd freechains.kt/src/test/shell/
 $ sudo make install     # copy to /usr/local/bin
 $ cd test/
 $ ./tests.sh
