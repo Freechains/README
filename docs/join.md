@@ -1,7 +1,5 @@
 # Freechains: Join our Community
 
-`TODO: update to v0.8.0`
-
 Publicly available resources to find users and interact with the community.
 
 Send a message to us!
