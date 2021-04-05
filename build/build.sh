@@ -30,6 +30,7 @@
 # $ cd /data/freechains/bin/
 # $ wget https://github.com/Freechains/README/releases/download/v0.8.3/install-v0.8.3.sh
 # $ sudo sh install-v0.8.3.sh /usr/local/bin
+# $ freechains --version
 # $ ./start-sync-xx.sh
 
 VER=v0.8.3

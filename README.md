@@ -117,7 +117,7 @@ $ freechains chain '$chat' post inline "I am here!"
    - Synchronize with the first host.
 
 ```
-$ freechains-host start /tmp/othost 8331
+$ freechains-host --port=8331 start /tmp/othost
 # switch to another terminal
 $ freechains --host=localhost:8331 chains join '$chat' 96700A... # type same key
 C40DBB...
