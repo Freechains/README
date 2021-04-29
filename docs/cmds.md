@@ -28,7 +28,7 @@ More Information:
 freechains v0.8.0
 
 Usage:
-    freechains chains join  <chain> [<key>]
+    freechains chains join  <chain> [<key>...]
     freechains chains leave <chain>
     freechains chains list
     freechains chains listen
@@ -39,7 +39,6 @@ Usage:
     freechains chain <name> post (file | inline | -) [<path_or_text>]
     freechains chain <name> (like | dislike) <hash>
     freechains chain <name> reps <hash_or_pub>
-    freechains chain <name> remove <hash>
     freechains chain <name> traverse <hashes>...
     freechains chain <name> listen
 
@@ -144,7 +143,7 @@ freechains crypto pubpvt "My very strong password"
 Prepares host to serve a chain.
 
 ```
-freechains chains join <chain> [<shared>]
+freechains chains join <chain> [<key>...]
 ```
 
 - `<chain>`: name of the chain, type is determined by its starting characters:
@@ -153,13 +152,13 @@ freechains chains join <chain> [<shared>]
   - `@`: public identity
     - if second character is `!`, only the chain owner can post
     - the rest of the name is the owner's public key
-- `<shared>`: shared key for a private group
+- `<key>...`: shared key for a private group or pioneer keys for public forums
 
 - Examples:
 
 ```
-freechains chains join '#'
-freechains chains join '#sports'
+freechains chains join '#' '96700ACD1128035FFEF5DC264DF87D5FEE45FF15E2A880708AE40675C9AD039EEB172ED6C782145B8D4FD043252206192C302E164C0BD16D49EB9D36D5188070'
+freechains chains join '#sports' '96700A..' 'F5BB1A..'
 freechains chains join '@B2853F4570903EF3ECC941F3497C08EC9FB9B03C4154D9B27FF3E331BC7B6431'
 freechains chains join '$friends' '8889BB68FB44065BBEC8D7441C53D50362737782445ADF0EB167A5DEF354D638'
 freechains chains join '@!C1733F457A90DEF3ECC941F349DCA8EC9FB9CA3C41D4D9B27FF3EDD1CC3B6431'
@@ -345,26 +344,6 @@ freechains chain <name> reps <hash_or_pub>
 ```
 freechains chain '#' reps '4_29A673...'
 freechains chain '#' reps 'B2853F45...'
-```
-
-#### `chain remove`
-
-Removes blocked block laying in the host.
-
-```
-freechains chain <name> remove <hash>
-```
-
-- `<name>`: name of the chain
-- `<hash>`:  hash of the block to remove
-
-Freechains limits the number of blocked blocks in the host to prevent excess.
-Blocks that are not accepted should be removed by hand after some period.
-
-- Examples:
-
-```
-freechains chain '#' remove '6_A56F33...'
 ```
 
 #### `chain traverse`
