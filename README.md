@@ -1,5 +1,7 @@
 # Freechains: Peer-to-peer Content Dissemination
 
+Freechains is a peer-to-peer publish-subscribe content dissemination protocol:
+
 - Local-first publish-subscribe topic-based model
 - Unstructured peer-to-peer gossip dissemination
 - Happened-before best-effort partial order
