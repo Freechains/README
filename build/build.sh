@@ -28,12 +28,13 @@
 #
 # TEST
 # $ cd /data/freechains/bin/
-# $ wget https://github.com/Freechains/README/releases/download/v0.8.4/install-v0.8.4.sh
-# $ sudo sh install-v0.8.4.sh /usr/local/bin
+# $ wget https://github.com/Freechains/README/releases/download/v0.8.5/install-v0.8.5.sh
+# $ sudo sh install-v0.8.5.sh /usr/local/bin
 # $ freechains --version
-# $ ./start-sync-xx.sh
+# $ ./start-sync-xx.sh      (see ssmtp)
+# $ ./setup-post.sh         (only once)
 
-VER=v0.8.4
+VER=v0.8.5
 DIR=/tmp/freechains-build/
 
 rm -Rf $DIR
