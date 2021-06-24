@@ -82,8 +82,7 @@ one-size-fits-all solution.
 In either case, the messages may still propagate in the network.
 With no granularity for moderating actions or no form of consensus, it is
 difficult to support public forums
-([`N<->N`](chains.md#public-forum-chain) communication) as discussed in the
-previous section.
+([`N<->N`](chains.md#public-forum-chain) communication) as discussed above.
 
 These limitations with identities and moderation seem to be acknowledged by
 Matrix and they have plans to become more
@@ -101,7 +100,7 @@ message signing, hash linking, and extra verification rules.
 
 ## Peer-to-Peer Systems
 
-In peer-to-peer systems all nodes in the network have the same role, i.e.,
+In peer-to-peer systems, all nodes in the network have the same role, i.e.,
 there are no distinctions between clients and servers.
 The peers communicate directly and cooperate satisfying a protocol to achieve a
 goal, e.g., maintaining a financial public ledger or simply allowing people to
@@ -110,7 +109,7 @@ communicate freely.
 successful peer-to-peer network but serves the very specific functionality of a
 digital currency.
 [Scuttlebutt](https://en.wikipedia.org/wiki/Secure_Scuttlebutt) and
-[Aether](https://github.com/nehbit/aether) cover people's communication for
+[Aether](https://github.com/nehbit/aether) cover social communication for
 friends and groups, respectively.
 [IPFS](https://en.wikipedia.org/wiki/InterPlanetary_File_System) and
 [Dat](https://en.wikipedia.org/wiki/Dat_(software)) are more data centric
@@ -127,14 +126,14 @@ as their underlying architecture, which are optimal to serve large and popular
 content, but not for search and discovery.
 In both cases, users need to know in advance what they are looking for, such as
 the exact link to a movie or a particular identity in the network.
-DHTs are probably not the best architecture to model decentralized people's
+DHTs are probably not the best architecture to model decentralized social
 communication with continuous updates on content with semantic relationships.
 The other systems that we discuss as follows do not use DHTs.
 
 Bitcoin provides a very strong property that messages in the network are
 ordered and that this order is the same in all hosts, thus reaching global
 consensus.
-This property is also relevant in the context of people's communication since a
+This property is also relevant in the context of social communication since a
 conversation can be thought as an ordered list of messages.
 Bitcoin uses a proof-of-work consensus algorithm that is immune to attacks such
 as SPAM and forged identities (Sybil attacks), which is also fundamental to be
@@ -224,16 +223,16 @@ Freechains is designed around a [minimum API](../README.md#basics):
     a `join` command to follow chains of groups and individuals,
     a `post` command to publish content into a chain (optionally with end-to-end encryption),
     a `get` command to read posts of a chain, and
-    a `traverse` command to iterate on a chain to discover content.
-A [public identity chain](chains.md#public-identity-chain) behaves more like
-Scuttlebutt, since only its owner may be allowed to post.
+    a `traverse` command to iterate on the contents of a chain.
+A [public identity chain](chains.md#public-identity-chain) (`1->N`, `1<-N`)
+behaves more like Scuttlebutt, since only its owner may be allowed to post.
 Following users is also asymmetric, so it's possible to build diverse social
 graphs in the same way as Scuttlebutt.
-A [public forum chain](chains.md#public-forum-chain) relies on the reputation
-system and behaves more like Aether, since users receive posts from other users
-they do not necessarily follow.
-Freechains also supports [private group chains](...) that circulates messages
-among trusted peers only.
+A [public forum chain](chains.md#public-forum-chain) (`N<->N`) relies on the
+reputation system and behaves more like Aether, since users receive posts from
+other users they do not necessarily follow.
+Freechains also supports [private group chains](chains.md#private-group-chain)
+(`N<->N`, `1<-`) that circulates messages among trusted peers only.
 
 The [reputation system](reps.md) tracks the quality of posts and authors inside
 each chain.
@@ -246,7 +245,7 @@ effectiveness is yet to be proven.
 
 Freechains also has some inherent limitations.
 Posts in public chains are restricted in size (currently 128kb) and each peer
-holds up to 10 posts from new users waiting for approval.
+holds up to 16 posts from new users waiting for approval.
 This is to prevent denial of service by flooding peers with posts without
 reputation.
 For large blobs, users may break messages in parts or use links such as for
@@ -268,7 +267,7 @@ We believe it's not hard to integrate some kind of proof of storage (e.g., ask
 the contents of some previous post) or integrate peer accountability in the
 reputation system.
 
-## Other Links:
+## References:
 
 - Decentralized Social Networks:
     - https://medium.com/@jaygraber/decentralized-social-networks-e5a7a2603f53

@@ -31,7 +31,7 @@
 # $ wget https://github.com/Freechains/README/releases/download/v0.8.5/install-v0.8.5.sh
 # $ sudo sh install-v0.8.5.sh /usr/local/bin
 # $ freechains --version
-# $ ./start-sync-xx.sh      (see ssmtp)
+# $ ./start-sync-xx.sh      (crontab -e, see ssmtp)
 # $ ./setup-post.sh         (only once)
 
 VER=v0.8.5
