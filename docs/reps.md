@@ -5,35 +5,20 @@ receives input from users (authors) based on likes and dislikes to posts.
 The reputation system tracks the reputation of posts and authors in the chain.
 Each chain is independent, so the reputation of a given author may vary across
 chains.
-The unit of reputation is known as ** *rep* ** and can be created, spent, and
-transferred in many ways:
+The unit of reputation is known as ***rep*** and can be created, spent, and
+transferred:
 
-- Create:
-    - The chain join accounts *+30 reps* to its pioneer.
-    - A post older than 24h, aka *consolidated post*, accounts *+1 rep* to its
-      author.
-- Spend:
-    - A post younger than at most 12h, aka *new post*, accounts *-1 rep* to its
-      author.
-- Transfer:
-    - A like    from author `A` to post `P` by author `B` accounts *-1 rep*
-      to `A` and *+1 rep* to `B`.
-    - A dislike from author `A` to post `P` by author `B` accounts *-1 rep*
-      to `A` and *-1 rep* to `B`.
+<img src="general.png">
 
-- Additional rules:
-    - New posts require previous reputation from authors or a like from other
-      authors.
-    - Authors are limited to at most *+30 reps*.
-    - Authors can benefit from at most one consolidated post accounts per day.
-    - The contents of posts are hidden if they reach at least 3 dislikes and
-      more dislikes than likes.
-- Special cases:
-    - In a [private group chain](chains.md#public-identity-chain), all users
-      have infinite reputation.
-    - In a [public identity chain](chains.md#private-group-chain), its owner
-      has infinite reputation. Other users might be allowed to post or not. If
-      allowed, they follow the general rules above.
+In the absence of moderation, permissionless peer-to-peer public forums are
+impractical, mostly because of Sybil attacks.
+For instance, it should take a few seconds to generate thousands of fake
+identities and SPAM million of messages into the system.
+The reputation system of Freechains works together with a consensus algorithm
+to mitigate Sybil attacks and make peer-to-peer public forums practical.
+The concrete rules are as follows:
+
+<img src="rules.png">
 
 See also the command-line interface for
     [likes and dislikes](cmds.md#chain-like--dislike) to posts
