@@ -1,11 +1,11 @@
 # Freechains: Reputation System
 
 In Freechains, each chain is controlled by an autonomous reputation system that
-receives input from users (authors) with likes and dislikes to posts.
+receives input from users (authors) based on likes and dislikes to posts.
 The reputation system tracks the reputation of posts and authors in the chain.
 Each chain is independent, so the reputation of a given author may vary across
 chains.
-The unit of reputation is known as *rep* and can be created, spent, and
+The unit of reputation is known as ** *rep* ** and can be created, spent, and
 transferred in many ways:
 
 - Create:

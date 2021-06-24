@@ -2,7 +2,7 @@
 
 A chain represents a topic in the publish-subscribe model of Freechains.
 Peers synchronize their chains to disseminate content in the network.
-A chain is a tree of messages or [blocks](blocks.md) linked from a set of heads
+A chain is a tree of [messages or blocks](blocks.md) linked from a set of heads
 down to the genesis block:
 
 <img src="chain.png">
@@ -27,7 +27,7 @@ chain are sharing the same chain.
 The [command](cmds.md#chains-join) to join a chain is as follows:
 
 ```
-$ freechains chains join <chain-name> [<key>]
+$ freechains chains join <chain-name> [<key>...]
 ```
 
 Note that Freechains provides a `join` instead a `create` command.
@@ -96,7 +96,7 @@ $ freechains crypto pubpvt '<my-very-strong-passphrase>'
 
 In a private group chain, all messages are encrypted using a key shared by
 trusted peers only.
-It can be used in `1<-1` communication such as e-mail conversations, `N<->N`
+It can be used in `1<->1` communication such as e-mail conversations, `N<->N`
 communication in small groups such as for family and close friends, and also
 in `1<-` "self communication" such as a personal to-do list and backups.
 
@@ -119,8 +119,8 @@ $ freechains crypto shared '<my-very-strong-passphrase>'
 8889BB68FB44065BBEC8D7441C53D50362737782445ADF0EB167A5DEF354D638
 ```
 
-The key has to be shared among the trusted friends by other means, such as
-through their public identity chains.
+The key has to be shared among the trusted friends by other means.
+<!--, such as through their public identity chains. -->
 
 ## Public Identity Chain
 

@@ -4,9 +4,9 @@ Freechains is a peer-to-peer publish-subscribe content dissemination protocol:
 
 - Local-first publish-subscribe topic-based model
 - Unstructured peer-to-peer gossip dissemination
-- Happened-before best-effort partial order
-- **Per-topic reputation system for healthiness**
 - **Multiple flavors of public and private communication** (`1->N`, `1<-N`, `N<->N`, `1<-`)
+- **Per-topic reputation system for healthiness**
+- **Consensus via authoring reputation (human work)**
 - Free in all senses
 
 *(In bold we highlight what we believe is particular to Freechains.)*
@@ -24,18 +24,17 @@ Freechains is (intended to be) decentralized, fair, free (*as-in-speech*), free
 scalable.
 -->
 
-- [Other systems](docs/others.md): comparison with other systems
-- [Commands](docs/cmds.md): list of all protocol commands
 - Main concepts:
-    - [Block](docs/blocks.md): unit of information (aka post or message)
     - [Chain](docs/chains.md): list of blocks (aka topic or feed]
+    - [Block](docs/blocks.md): unit of information (aka post or message)
     - [Reps](docs/reps.md): reputation system of chains
+- [Commands](docs/cmds.md): list of all protocol commands
+- [Other systems](docs/others.md): comparison with other systems
 - [Google group](https://groups.google.com/forum/#!forum/freechains):
     discussion group about Freechains
 - [Resources](docs/join.md):
     publicly available chains, identities and peers
-- [Source code](https://github.com/Freechains/freechains.kt/):
-    - [Compile instructions](docs/compile.md)
+- [Source code](https://github.com/Freechains/freechains.kt/)
 - Tools (`outdated`):
     - [Store](https://github.com/Freechains/store):
         interprets a chain as a dataset
