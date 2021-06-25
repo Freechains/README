@@ -35,19 +35,22 @@ scalable.
 - [Resources](docs/join.md):
     publicly available chains, identities and peers
 - [Source code](https://github.com/Freechains/freechains.kt/)
+- [Android dashboard](https://github.com/Freechains/android-dashboard/):
+    manage/navigate your peers/chains
+- Introductory videos:
+    [1/3](https://www.youtube.com/watch?v=7_jM0lgWL2c) |
+    [2/3](https://www.youtube.com/watch?v=bL0yyeVz_xk) |
+    [3/3](https://www.youtube.com/watch?v=APlHK6YmmFw)
+
+<!--
 - Tools (`outdated`):
     - [Store](https://github.com/Freechains/store):
         interprets a chain as a dataset
     - [Sync](https://github.com/Freechains/sync):
         persist and replicate peers and chains of interest
-    - [Android dashboard](https://github.com/Freechains/android-dashboard/):
-        manage/navigate your peers/chains
     - [E-mail client](https://github.com/Freechains/mail/):
         communicate through an e-mail client (very hacky, abandoned?)
-- Introductory videos:
-    [1/3](https://www.youtube.com/watch?v=7_jM0lgWL2c) |
-    [2/3](https://www.youtube.com/watch?v=bL0yyeVz_xk) |
-    [3/3](https://www.youtube.com/watch?v=APlHK6YmmFw)
+-->
 
 ## Install
 
