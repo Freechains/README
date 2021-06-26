@@ -12,11 +12,11 @@ same in all peers in the network due to connectivity and latency issues.
 Each block has a set of back links pointing to previous blocks.
 The oldest block is the *genesis block* and is the same in all peers, since it
 is derived from the name and parameters of the chain.
-The chain structure forms a [Merkle Tree](https://en.wikipedia.org/wiki/Merkle_tree),
+The chain structure forms a [Merkle DAG](https://en.wikipedia.org/wiki/Merkle_tree),
 which is tamper proof.
-This means that if two peers both have `H1` and `H2` on their trees, then the
-subtrees starting from these blocks and going back to the genesis block must be
-the same in both peers.
+This means that if two peers both have `H1` and `H2` on their DAGs, then the
+subgraphs starting from these blocks and going back to the genesis block must
+be the same in both peers.
 
 A chain is univocally identified by a unique hash code from its own name.
 For example, the chain `#chat` has identifier

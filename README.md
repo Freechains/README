@@ -1,8 +1,9 @@
 # Freechains: Peer-to-peer Content Dissemination
 
-Freechains is a peer-to-peer publish-subscribe content dissemination protocol:
+Freechains is a permissionless peer-to-peer publish-subscribe content
+dissemination protocol:
 
-- Local-first publish-subscribe topic-based model
+- Local-first permissionless publish-subscribe topic-based model
 - Unstructured peer-to-peer gossip dissemination
 - **Multiple flavors of public and private communication** (`1->N`, `1<-N`, `N<->N`, `1<-`)
 - **Per-topic reputation system for healthiness**
@@ -25,9 +26,10 @@ scalable.
 -->
 
 - Main concepts:
-    - [Chain](docs/chains.md): list of blocks (aka topic or feed]
-    - [Block](docs/blocks.md): unit of information (aka post or message)
-    - [Reps](docs/reps.md): reputation system of chains
+    - [Chain](docs/chains.md):   list of blocks (aka topic or feed]
+    - [Block](docs/blocks.md):   unit of information (aka post or message)
+    - [Reps](docs/reps.md):      reputation system of chains
+    - [Consensus](docs/cons.md): consensus order of chains
 - [Commands](docs/cmds.md): list of all protocol commands
 - [Other systems](docs/others.md): comparison with other systems
 - [Google group](https://groups.google.com/forum/#!forum/freechains):

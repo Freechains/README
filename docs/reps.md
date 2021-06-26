@@ -1,24 +1,59 @@
 # Freechains: Reputation System
 
-In Freechains, each chain is controlled by an autonomous reputation system that
-receives input from users (authors) based on likes and dislikes to posts.
+In the absence of moderation, permissionless peer-to-peer public forums are
+impractical, mostly because of Sybil attacks.
+For instance, it should take a few seconds to generate thousands of fake
+identities and SPAM million of messages into the system.
+The reputation system of Freechains works together with a
+[consensus algorithm](cons.md) to mitigate Sybil attacks and make peer-to-peer
+public forums practical.
+
+Each chain is controlled by an autonomous reputation system that receives input
+from users (authors) based on likes and dislikes to posts.
 The reputation system tracks the reputation of posts and authors in the chain.
 Each chain is independent, so the reputation of a given author may vary across
 chains.
 The unit of reputation is known as ***rep*** and can be created, spent, and
 transferred:
 
-<img src="general.png">
+<img src="general.png" width="400" align="right">
 
-In the absence of moderation, permissionless peer-to-peer public forums are
-impractical, mostly because of Sybil attacks.
-For instance, it should take a few seconds to generate thousands of fake
-identities and SPAM million of messages into the system.
-The reputation system of Freechains works together with a consensus algorithm
-to mitigate Sybil attacks and make peer-to-peer public forums practical.
+Users can spend reps to post and rate content in the forums:
+    a ***post*** initially penalizes authors until it consolidates and counts positively;
+    a ***like*** is a positive feedback that helps subscribers distinguish good content amid excess;
+    a ***dislike*** is a negative feedback that revokes content when crossing a threshold.
+
 The concrete rules are as follows:
 
 <img src="rules.png">
+
+- ***Rule 1.a*** bootstraps a public chain, assigning *30 reps* equally
+  distributed to the pioneers referred in the public keys.
+  The pioneers shape the initial culture of the chain with their first posts
+  and likes.
+- ***Rule 1.b*** awards authors of new posts with 1 rep, but only after 24
+  hours.
+  This rule stimulates content creation and grows the economy of chains.
+  The 24-hour period gives sufficient time for other users to judge the post
+  before awarding the author.
+  It also regulates the growth speed of the chain.
+- ***Rule 2*** imposes a temporary cost of *1 rep* for each new post.
+  The cost period depends on the activity succeeding (and including) the new
+  post.
+  The more activity from reputed authors, the less time the discount persists.
+- ***Rules 3.a and 3.b*** for *likes* and *dislikes* serve three purposes:
+    (i) welcoming new users,
+    (ii) measuring the quality of posts, and
+    (iii) censoring abuse (SPAM, fake news, illegal content, etc).
+  Likes and dislikes may affect the state of [posts](blocks.md).
+- ***Rule 4.a*** imposes that authors require at least *1 rep* to post,
+  effectively blocking Sybil actions.
+  Note that ***Rule 1.a*** solves the chicken-and-egg problem imposed by this
+  rule.
+- ***Rule 4.b*** limits authors to at most *30 reps*, which provides incentives
+  to spend likes and thus decentralize the network.
+- ***Rule 4.c*** limits the size of posts to at most *128 Kb* to prevent DDoS
+  attacks using gigantic blocked posts.
 
 See also the command-line interface for
     [likes and dislikes](cmds.md#chain-like--dislike) to posts
