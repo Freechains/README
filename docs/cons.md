@@ -14,7 +14,7 @@ across peers and thus validate concurrent operations consistently.
 Freechains order posts favoring branches with users that constitute the
 majority of reputation in the network:
 
-<img src="cons.png">
+<img width="550" src="cons.png" align="right">
 
 Figure A illustrates the consensus criterion.
 A public forum DAG has a common prefix with users **a**, **b**, and **c**.
@@ -49,7 +49,7 @@ As an example, if the common prefix has 100 posts in the last 28 days, the week
 average is 25 posts.
 Hence, if both branches contain more than 25 new posts, they cannot be merged.
 
-<img src="merge.png" width="500" align="right">
+<img src="merge.png" width="550" align="right">
 
 Merging in machine **i**:
 
