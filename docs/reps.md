@@ -16,7 +16,7 @@ chains.
 The unit of reputation is known as ***rep*** and can be created, spent, and
 transferred:
 
-<img src="general.png" width="400" align="right">
+<img src="general.png" width="500" align="right">
 
 Users can spend reps to post and rate content in the forums:
     a ***post*** initially penalizes authors until it consolidates and counts positively;
@@ -125,15 +125,3 @@ discussions with a reasonable degree of disagreement, otherwise the economy of
 chains would collapse with an outbreak of dislikes.
 On the other hand, obvious undesired content like SPAM is rapidly banned (along
 with its author) with a few dislikes that do not affect the chain economy.
-
-## Scenarios
-
-`TODO`
-
-<!--
-- uber
-- mercado livre
-- homogeneous group
-- heterogeneous group
-- news site
--->
