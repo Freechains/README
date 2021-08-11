@@ -7,6 +7,7 @@ Send a message to us!
 ## Public Resources
 
 - Chains:
+    - `#test`: for testing purposes (post anything you want)
     - `#`:     miscellaneous content
     - `#br`:   miscellaneous content in brazilian portuguese
 <!--
@@ -29,8 +30,9 @@ Send a message to us!
 
 ```
 $ freechains host start '<local-path>' &    # every time on startup
-$ freechains chains join '#'   'A2885F4570903EF5EBA941F3497B08EB9FA9A03B4284D9B27FF3E332BA7B6431'
-$ freechains chains join '#br' 'A2885F4570903EF5EBA941F3497B08EB9FA9A03B4284D9B27FF3E332BA7B6431'
+$ freechains chains join '#test' '11374EF6DBE219A3E50712FD820013274B13E4BBF5BBC78101126CF21710C661'
+$ freechains chains join '#'     'A2885F4570903EF5EBA941F3497B08EB9FA9A03B4284D9B27FF3E332BA7B6431'
+$ freechains chains join '#br'   'A2885F4570903EF5EBA941F3497B08EB9FA9A03B4284D9B27FF3E332BA7B6431'
 $ freechains chains join '@A2885F4570903EF5EBA941F3497B08EB9FA9A03B4284D9B27FF3E332BA7B6431'
 $ freechains chains join '@<your-pubkey>'
 ```
