@@ -43,11 +43,13 @@ as if it never existed.
 
 As an additional rule to consensus, long-lasting branches do not merge,
 creating *hard forks* in the network.
-A hard fork occurs when a branch contains at least 7 days of activity
+A hard fork occurs when a local branch contains at least 7 days of activity
 considering the average of the last 28 days in the common prefix.
 As an example, if the common prefix has 100 posts in the last 28 days, the week
 average is 25 posts.
-Hence, if both branches contain more than 25 new posts, they cannot be merged.
+Hence, if the local branch contains more than 25 new posts, it must be ordered
+first, even if the remote branch has more reputation, which creates a hard
+fork.
 
 <img src="merge.png" width="550" align="right">
 
