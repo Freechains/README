@@ -45,8 +45,8 @@ As an additional rule to consensus, long-lasting branches do not merge,
 creating *hard forks* in the network.
 A hard fork occurs when a local branch contains at least 7 days of activity
 considering the average of the last 28 days in the common prefix.
-As an example, if the common prefix has 100 posts in the last 28 days, the week
-average is 25 posts.
+As an example, if the common prefix has 100 posts in the last 28 days, the
+weekly average is 25 posts.
 Hence, if the local branch contains more than 25 new posts, it must be ordered
 first, even if the remote branch has more reputation, which creates a hard
 fork.
@@ -55,7 +55,7 @@ fork.
 
 Merging in machine **i**:
 
-- (a) **i** is ordered first if **i** has more posts than the week average in the common prefix.
+- (a) **i** is ordered first if **i** has more posts than the weekly average in the common prefix.
 - (b) **i** is ordered first if **i** has more reputation in the common prefix.
 - (c) **j** is ordered first if **j** has more reputation in the common prefix.
 - (d) otherwise, branches are ordered by lexicographical order of the block hashes after the common prefix.
