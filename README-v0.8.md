@@ -81,7 +81,7 @@ The basic API of Freechains is very straightforward:
 - `freechains chains join ...`:    joins a chain locally to post and read content
 - `freechains chain post ...`:     posts to a chain locally
 - `freechains chain get ...`:      reads a post locally
-- `freechains chain consensus`:    shows all posts in consensus order
+- `freechains chain traverse ...`: iterates over (discovers) local posts
 - `freechains peer send/recv ...`: synchronizes a local chain with a remote peer
 
 Follows a step-by-step execution:
@@ -131,15 +131,12 @@ $ freechains --host=localhost:8330 peer localhost:8331 send '$chat'
 2 / 2
 ```
 
-The last command sends all new posts from `8330` to `8331`.
-
-- Iterate over posts in a chain:
-    - Shows the consensus order of posts in the chain.
-    - Reads the posts payloads.
+The last command sends all new posts from `8330` to `8331`, which can
+then be traversed as follows:
 
 ```
-$ freechains --host=localhost:8331 chain '$chat' consensus
-0_C40DBB... 1_DE2EF0... 2_317441...
+$ freechains --host=localhost:8331 chain '$chat' traverse 0_C40DBB...
+1_DE2EF0... 2_317441...
 $ freechains --host=localhost:8331 chain '$chat' get payload 1_DE2EF0...
 Hello World!
 $ freechains --host=localhost:8331 chain '$chat' get payload 1_DE2EF0...

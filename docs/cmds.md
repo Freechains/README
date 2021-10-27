@@ -39,7 +39,7 @@ Usage:
     freechains chain <name> post (file | inline | -) [<path_or_text>]
     freechains chain <name> (like | dislike) <hash>
     freechains chain <name> reps <hash_or_pub>
-    freechains chain <name> traverse <hashes>...
+    freechains chain <name> consensus
     freechains chain <name> listen
 
     freechains peer <addr:port> ping
@@ -346,27 +346,21 @@ freechains chain '#' reps '4_29A673...'
 freechains chain '#' reps 'B2853F45...'
 ```
 
-#### `chain traverse`
+#### `chain consensus`
 
-Traverses and gets the hashes of a sub-tree of blocks in the chain.
-Starts from the heads and traverses down to the given block hashes (excluded).
+Gets the consensus order in the chains.
+Lists all block hashes starting from the genesis block.
 
 ```
-freechains chain <name> traverse <hashes>...
+freechains chain <name> consensus
 ```
 
 - `<name>`: name of the chain
-- `<hashes>...`: list of hashes to stop traversing
-
-The given hashes are typically the previous heads in the chain that were
-already processed by an application.
-To process new blocks in the chain, these old heads are used to stop the
-traversal.
 
 - Examples:
 
 ```
-freechains chain '#' traverse '2_CBBBE2...' '3_D3DB32...'
+freechains chain '#' consensus
 ```
 
 #### `chain listen`

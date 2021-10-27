@@ -1,3 +1,8 @@
+v0.9 (mar/21)
+-------------
+
+- Command `traverse` is now renamed to `consensus`.
+
 v0.8 (mar/21)
 -------------
 
