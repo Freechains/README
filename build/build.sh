@@ -28,13 +28,13 @@
 #
 # TEST
 # $ cd /data/freechains/bin/
-# $ wget https://github.com/Freechains/README/releases/download/v0.8.6/install-v0.8.6.sh
-# $ sudo sh install-v0.8.6.sh /usr/local/bin
+# $ wget https://github.com/Freechains/README/releases/download/v0.10.0/install-v0.10.0.sh
+# $ sudo sh install-v0.10.0.sh /usr/local/bin
 # $ freechains --version
 # $ ./start-sync-xx.sh      (crontab -e, see ssmtp)
 # $ ./setup-post.sh         (only once)
 
-VER=v0.8.6
+VER=v0.10.0
 DIR=/tmp/freechains-build/
 
 rm -Rf $DIR

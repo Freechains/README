@@ -4,6 +4,11 @@
   10553 -> 10555 -> 10557 -> 10568 -> 10575 -> 10590 -> 10607 ->  5691 -> .... -> 5702 ->                 5808 KB
 ```
 
+- revoke key prevents all future signs from that key
+- revoke post makes it hidden forever / must be accepted even w/o reps
+- cache everything before 7 days
+- android app
+
 - cts/ids check each other
 - sort sync by ping timeout
 - ping: return version

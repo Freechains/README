@@ -1,3 +1,10 @@
+v0.10 (jun/22)
+--------------
+
+- Consensus now freezes after 100 blocks or 7 days.
+- Several optimizations on the consensus algorithm.
+- Small fixes on synchronization protocol.
+
 v0.9 (mar/21)
 -------------
 
