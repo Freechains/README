@@ -77,7 +77,7 @@ $ sudo sh install-v0.10.0.sh /usr/local/bin  # or     unzip to system  directory
 The basic API of Freechains is very straightforward:
 
 - `freechains-host start ...`:     starts the local peer to serve requests (execute on every restart)
-- `freechains crypto ...`:         creates a cryptographic identity
+- `freechains keys ...`:           creates a cryptographic key
 - `freechains chains join ...`:    joins a chain locally to post and read content
 - `freechains chain post ...`:     posts to a chain locally
 - `freechains chain get ...`:      reads a post locally
@@ -97,7 +97,7 @@ $ freechains-host start /tmp/myhost
 - Create an identity:
 
 ```
-$ freechains crypto shared "My very strong passphrase"  # returns shared key
+$ freechains keys shared "My very strong passphrase"  # returns shared key
 96700ACD1128035FFEF5DC264DF87D5FEE45FF15E2A880708AE40675C9AD039E
 ```
 

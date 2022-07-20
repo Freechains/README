@@ -1,9 +1,10 @@
 v0.10 (jun/22)
 --------------
 
+- Command `crypto` is now renamed to `keys`.
 - Consensus now freezes after 100 blocks or 7 days.
 - Several optimizations on the consensus algorithm.
-- Small fixes on synchronization protocol.
+- Small fixes on the synchronization protocol.
 
 v0.9 (mar/21)
 -------------
