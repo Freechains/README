@@ -84,7 +84,7 @@ $ freechains chains join '#sports' '@59BD9ED9A42EC1E63ABB8FEF5164893C7DD51A2B1E6
 The key argument identifies the chain pioneer which starts with *30 reps* in
 the reputation system.
 
-A public key can be [generated](cmds.md#keys-create) from a secret
+A public key can be [generated](cmds.md#keys) from a secret
 passphrase:
 
 ```
@@ -111,7 +111,7 @@ even required to sign messages.
 All messages are automatically encrypted on creation and decrypted on receipt
 using the shared key.
 
-A shared key can be [generated](cmds.md#keys-create) from a secret
+A shared key can be [generated](cmds.md#keys) from a secret
 passphrase:
 
 ```
