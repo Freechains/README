@@ -1,9 +1,14 @@
 # Freechains: Peer-to-peer Content Dissemination
 
+Freechains is a permissionless social media protocol with integrated
+reputation.
+
+<!--
 Freechains is a permissionless peer-to-peer publish-subscribe content
 dissemination protocol:
+-->
 
-- Local-first permissionless publish-subscribe topic-based model
+- Local-first publish-subscribe topic-based model
 - Unstructured peer-to-peer gossip dissemination
 - **Multiple flavors of public and private communication** (`1->N`, `1<-N`, `N<->N`, `1<-`)
 - **Per-topic reputation system for healthiness**
@@ -12,11 +17,11 @@ dissemination protocol:
 
 *(In bold we highlight what we believe is particular to Freechains.)*
 
-A user posts a message to a chain (a topic) and all other users subscribed to
-the same chain eventually receive the message.
-Users spend their reputation to post new messages and gain reputation from
-consolidated posts.
-Users can like and dislike messages from other users, which transfer reputation
+A user posts a message to a chain (a topic) and other users subscribed to the
+same chain eventually receive the message.
+Users spend reputation tokens, known as `reps`, to post new messages and gain
+`reps` as they consolidate.
+Users can like and dislike messages from other users, which transfer `reps`
 between them.
 
 <!---
