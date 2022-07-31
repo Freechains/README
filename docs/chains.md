@@ -84,11 +84,11 @@ $ freechains chains join '#sports' '@59BD9ED9A42EC1E63ABB8FEF5164893C7DD51A2B1E6
 The key argument identifies the chain pioneer which starts with *30 reps* in
 the reputation system.
 
-A public key can be [generated](cmds.md#crypto-create) from a secret
+A public key can be [generated](cmds.md#keys) from a secret
 passphrase:
 
 ```
-$ freechains crypto pubpvt '<my-very-strong-passphrase>'
+$ freechains keys pubpvt '<my-very-strong-passphrase>'
 59BD9E... 8889BB...     # generated public and private keys
 ```
 
@@ -111,11 +111,11 @@ even required to sign messages.
 All messages are automatically encrypted on creation and decrypted on receipt
 using the shared key.
 
-A shared key can be [generated](cmds.md#crypto-create) from a secret
+A shared key can be [generated](cmds.md#keys) from a secret
 passphrase:
 
 ```
-$ freechains crypto shared '<my-very-strong-passphrase>'
+$ freechains keys shared '<my-very-strong-passphrase>'
 8889BB68FB44065BBEC8D7441C53D50362737782445ADF0EB167A5DEF354D638
 ```
 

@@ -46,7 +46,7 @@ Usage:
     freechains peer <addr:port> chains
     freechains peer <addr:port> (send | recv) <chain>
 
-    freechains crypto (shared | pubpvt) <passphrase>
+    freechains keys (shared | pubpvt) <passphrase>
 
 Options:
     --help              [none]            displays this help
@@ -114,14 +114,14 @@ All commands accept an optional host or port to connect:
     --port=<port>       sets port to connect [default: 8330]
 ```
 
-### Crypto
+### Keys
 
-#### `crypto`
+#### `keys`
 
 Creates symmetric and asymmetric cryptographic keys.
 
 ```
-freechains crypto (shared | pubpvt) <passphrase>
+freechains keys (shared | pubpvt) <passphrase>
 ```
 
 - `(shared | pubpvt)`
@@ -132,8 +132,8 @@ freechains crypto (shared | pubpvt) <passphrase>
 - Examples:
 
 ```
-freechains crypto shared "My very strong password"
-freechains crypto pubpvt "My very strong password"
+freechains keys shared "My very strong password"
+freechains keys pubpvt "My very strong password"
 ```
 
 ### Chains
