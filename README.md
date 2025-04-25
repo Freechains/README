@@ -64,17 +64,17 @@ scalable.
 First, you need to install `java` and `libsodium`:
 
 ```
-$ sudo apt install default-jre libsodium23
+sudo apt install default-jre libsodium23
 ```
 
 Then, you are ready to install `freechains`:
 
 ```
-$ wget https://github.com/Freechains/README/releases/download/v0.10.1/install-v0.10.1.sh
+wget https://github.com/Freechains/README/releases/download/v0.10.1/install-v0.10.1.sh
 
 # choose one:
-$ sh install-v0.10.1.sh .                    # either unzip to current directory (must be in the PATH)
-$ sudo sh install-v0.10.1.sh /usr/local/bin  # or     unzip to system  directory
+sh install-v0.10.1.sh .                    # either unzip to current directory (must be in the PATH)
+sudo sh install-v0.10.1.sh /usr/local/bin  # or     unzip to system  directory
 ```
 
 ## Basics
@@ -94,7 +94,7 @@ Follows a step-by-step execution:
 - Start host:
 
 ```
-$ freechains-host start /tmp/myhost
+freechains-host start /tmp/myhost
 ```
 
 - Switch to another terminal.
@@ -147,7 +147,7 @@ $ freechains --host=localhost:8331 chain '$chat' consensus
 0_C40DBB... 1_DE2EF0... 2_317441...
 $ freechains --host=localhost:8331 chain '$chat' get payload 1_DE2EF0...
 Hello World!
-$ freechains --host=localhost:8331 chain '$chat' get payload 1_DE2EF0...
+$ freechains --host=localhost:8331 chain '$chat' get payload 2_317441...
 I am here!
 ```
 
